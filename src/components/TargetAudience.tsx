@@ -28,7 +28,7 @@ export default function TargetAudience() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-deltom-green text-center mb-16">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0F3D2E] text-center mb-16">
             Une solution pensée par des hôtes, pour des hôtes.
           </h2>
 
@@ -40,16 +40,16 @@ export default function TargetAudience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="group bg-deltom-cream p-8 rounded-2xl hover:bg-deltom-green transition-all duration-300 cursor-pointer"
+                className="group bg-[#F7F1ED] p-8 rounded-2xl hover:bg-[#0F3D2E] transition-all duration-300 cursor-pointer"
               >
-                <audience.icon className="w-12 h-12 text-deltom-copper mb-4 group-hover:text-deltom-cream transition-colors" />
-                <h3 className="font-serif text-2xl text-deltom-green mb-2 group-hover:text-white transition-colors">
+                <audience.icon className="w-12 h-12 text-[#A8643A] mb-4 group-hover:text-[#F7F1ED] transition-colors" />
+                <h3 className="font-serif text-2xl text-[#0F3D2E] mb-2 group-hover:text-white transition-colors">
                   {audience.title}
                 </h3>
-                <p className="text-deltom-copper font-semibold mb-4 group-hover:text-deltom-cream transition-colors">
+                <p className="text-[#A8643A] font-semibold mb-4 group-hover:text-[#F7F1ED] transition-colors">
                   {audience.subtitle}
                 </p>
-                <p className="text-deltom-gray group-hover:text-white transition-colors">
+                <p className="text-[#A0A0A0] group-hover:text-white transition-colors">
                   {audience.description}
                 </p>
               </motion.div>

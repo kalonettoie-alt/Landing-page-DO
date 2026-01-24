@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function AboutUs() {
   return (
-    <section id="histoire" className="py-20 bg-deltom-green relative overflow-hidden">
+    <section id="histoire" className="py-20 bg-[#0F3D2E] relative overflow-hidden">
       {/* Titre décoratif en arrière-plan */}
       <div className="absolute inset-0 flex items-center justify-center opacity-5">
         <h2 className="font-serif text-8xl md:text-9xl text-white">
@@ -46,8 +46,8 @@ export default function AboutUs() {
               interventions traçables et un suivi transparent en temps réel.
             </p>
 
-            <div className="border-l-4 border-deltom-copper pl-6 mt-10">
-              <p className="text-deltom-copper italic text-xl">
+            <div className="border-l-4 border-[#A8643A] pl-6 mt-10">
+              <p className="text-[#A8643A] italic text-xl">
                 Nous visons des partenariats durables, bâtis sur la confiance et l'efficacité.
               </p>
             </div>

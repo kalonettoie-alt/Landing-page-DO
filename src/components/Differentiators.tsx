@@ -37,10 +37,10 @@ export default function Differentiators() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-deltom-copper uppercase tracking-wide text-sm font-semibold text-center mb-3">
+          <p className="text-[#A8643A] uppercase tracking-wide text-sm font-semibold text-center mb-3">
             Innovation & Standard
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-deltom-green text-center mb-12">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0F3D2E] text-center mb-12">
             Comment opérons-nous au quotidien ?
           </h2>
 
@@ -48,20 +48,20 @@ export default function Differentiators() {
             {items.map((item, index) => (
               <div
                 key={index}
-                className="border border-deltom-cream rounded-xl overflow-hidden"
+                className="border border-[#F7F1ED] rounded-xl overflow-hidden"
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                  className="w-full flex items-center justify-between p-6 text-left bg-deltom-cream hover:bg-deltom-green/5 transition-colors"
+                  className="w-full flex items-center justify-between p-6 text-left bg-[#F7F1ED] hover:bg-[#0F3D2E]/5 transition-colors"
                 >
-                  <span className="font-serif text-xl text-deltom-green font-semibold pr-4">
+                  <span className="font-serif text-xl text-[#0F3D2E] font-semibold pr-4">
                     {item.title}
                   </span>
                   <motion.div
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="w-6 h-6 text-deltom-copper flex-shrink-0" />
+                    <ChevronDown className="w-6 h-6 text-[#A8643A] flex-shrink-0" />
                   </motion.div>
                 </button>
 
@@ -75,7 +75,7 @@ export default function Differentiators() {
                       className="overflow-hidden"
                     >
                       <div className="p-6 bg-white">
-                        <p className="text-deltom-gray leading-relaxed">
+                        <p className="text-[#A0A0A0] leading-relaxed">
                           {item.content}
                         </p>
                       </div>

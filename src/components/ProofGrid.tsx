@@ -21,7 +21,7 @@ export default function ProofGrid() {
   ];
 
   return (
-    <section className="py-20 bg-deltom-green">
+    <section className="py-20 bg-[#0F3D2E]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -46,7 +46,7 @@ export default function ProofGrid() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="bg-white rounded-2xl p-8 shadow-xl"
               >
-                <h3 className="font-serif text-xl text-deltom-green mb-4">
+                <h3 className="font-serif text-xl text-[#0F3D2E] mb-4">
                   {testimonial.title}
                 </h3>
 
@@ -55,18 +55,18 @@ export default function ProofGrid() {
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 fill-deltom-copper text-deltom-copper"
+                      className="w-5 h-5 fill-[#A8643A] text-[#A8643A]"
                     />
                   ))}
                 </div>
 
                 {/* Badge */}
-                <div className="inline-block bg-deltom-cream text-deltom-green px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                <div className="inline-block bg-[#F7F1ED] text-[#0F3D2E] px-3 py-1 rounded-full text-sm font-semibold mb-4">
                   {testimonial.badge}
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-deltom-gray italic mb-6">
+                <blockquote className="text-[#A0A0A0] italic mb-6">
                   "{testimonial.quote}"
                 </blockquote>
 
@@ -75,7 +75,7 @@ export default function ProofGrid() {
                   href={testimonial.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-deltom-copper hover:text-deltom-green transition-colors font-semibold"
+                  className="inline-flex items-center gap-2 text-[#A8643A] hover:text-[#0F3D2E] transition-colors font-semibold"
                 >
                   Voir l'annonce Airbnb
                   <ExternalLink className="w-4 h-4" />

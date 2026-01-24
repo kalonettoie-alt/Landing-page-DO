@@ -50,14 +50,14 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-deltom-green hover:text-deltom-copper transition-colors font-medium"
+                className="text-[#0F3D2E] hover:text-[#A8643A] transition-colors font-medium"
               >
                 {link.label}
               </a>
             ))}
             <a
               href="#contact"
-              className="bg-deltom-green text-white px-6 py-3 rounded-lg hover:bg-deltom-copper transition-all hover:scale-105"
+              className="bg-[#0F3D2E] text-white px-6 py-3 rounded-lg hover:bg-[#A8643A] transition-all hover:scale-105"
             >
               Devis personnalisé
             </a>
@@ -66,7 +66,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-deltom-green"
+            className="md:hidden p-2 text-[#0F3D2E]"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -97,7 +97,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={handleLinkClick}
-                className="block w-full bg-deltom-green text-white px-6 py-3 rounded-lg hover:bg-deltom-copper transition-all text-center"
+                className="block w-full bg-[#0F3D2E] text-white px-6 py-3 rounded-lg hover:bg-[#A8643A] transition-all text-center"
               >
                 Devis personnalisé
               </a>
