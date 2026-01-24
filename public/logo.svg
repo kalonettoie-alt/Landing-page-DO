@@ -1,0 +1,8 @@
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon/Symbol on the left -->
+  <circle cx="25" cy="25" r="18" fill="#0F3D2E"/>
+  <path d="M 25 15 L 25 35 M 18 25 L 32 25" stroke="#F7F1ED" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Text: DELTOM -->
+  <text x="52" y="32" font-family="Playfair Display, serif" font-size="24" font-weight="700" fill="#0F3D2E">DELTOM</text>
+</svg>
