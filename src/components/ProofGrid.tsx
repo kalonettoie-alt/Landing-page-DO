@@ -21,65 +21,85 @@ export default function ProofGrid() {
   ];
 
   return (
-    <section className="py-20 bg-[#0F3D2E]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 bg-[#0F3D2E] relative overflow-hidden">
+      {/* Texture subtile */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+            backgroundSize: '40px 40px',
+          }}
+        />
+      </div>
+
+      {/* Grande citation en arrière-plan */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[20vw] text-white/[0.02] pointer-events-none select-none">
+        "
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white text-center mb-4 lowercase">
-            une idée concrète de notre travail
-          </h2>
-          <p className="text-white/90 text-center text-lg mb-16">
-            L'excellence opérationnelle certifiée par nos clients.
-          </p>
+          <div className="text-center mb-20">
+            <span className="inline-block text-[#C9A962] uppercase tracking-[0.4em] text-xs mb-6">
+              Témoignages
+            </span>
+            <h2 className="font-serif text-4xl md:text-6xl text-white">
+              Ce que disent
+              <br />
+              <span className="italic text-[#C9A962]">nos clients</span>
+            </h2>
+          </div>
 
+          {/* Grille de témoignages */}
           <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((t, i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white rounded-2xl p-8 shadow-xl"
+                transition={{ delay: i * 0.2, duration: 0.8 }}
+                className="bg-white/5 backdrop-blur-sm border border-white/10 p-10 relative group hover:bg-white/10 transition-all duration-500"
               >
-                <h3 className="font-serif text-xl text-[#0F3D2E] mb-4">
-                  {testimonial.title}
-                </h3>
-
-                {/* Rating Stars */}
-                <div className="flex items-center gap-1 mb-3">
-                  {[...Array(testimonial.rating)].map((_, i) => (
+                {/* Étoiles */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(5)].map((_, index) => (
                     <Star
-                      key={i}
-                      className="w-5 h-5 fill-[#A8643A] text-[#A8643A]"
+                      key={index}
+                      className="w-4 h-4 fill-[#C9A962] text-[#C9A962]"
                     />
                   ))}
                 </div>
 
-                {/* Badge */}
-                <div className="inline-block bg-[#F7F1ED] text-[#0F3D2E] px-3 py-1 rounded-full text-sm font-semibold mb-4">
-                  {testimonial.badge}
-                </div>
-
-                {/* Quote */}
-                <blockquote className="text-[#A0A0A0] italic mb-6">
-                  "{testimonial.quote}"
+                {/* Citation */}
+                <blockquote className="font-serif text-xl text-white/90 italic leading-relaxed mb-8">
+                  "{t.quote}"
                 </blockquote>
 
-                {/* Link */}
-                <a
-                  href={testimonial.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#A8643A] hover:text-[#0F3D2E] transition-colors font-semibold"
-                >
-                  Voir l'annonce Airbnb
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+                {/* Source */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-white font-medium">{t.title}</p>
+                    <p className="text-white/50 text-sm">Airbnb • Note 5/5</p>
+                  </div>
+                  <a
+                    href={t.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#C9A962] hover:text-white transition-colors"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                </div>
+
+                {/* Accent de coin */}
+                <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-[#C9A962]/30" />
               </motion.div>
             ))}
           </div>

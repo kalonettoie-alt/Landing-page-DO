@@ -27,41 +27,51 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md'
+          ? 'bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(15,61,46,0.1)]'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="#" className="flex items-center">
-            <img
-              src="/logo.svg"
-              alt="Deltom Operator"
-              className="h-10 md:h-12"
-            />
+        <div className="flex items-center justify-between h-24">
+          {/* Logo avec animation premium */}
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 bg-[#0F3D2E] rounded-full flex items-center justify-center group-hover:bg-[#A8643A] transition-colors duration-300">
+              <span className="text-white font-serif text-xl">D</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-serif text-xl text-[#0F3D2E] tracking-wide">
+                DELTOM
+              </span>
+              <span className="text-[#A8643A] text-[10px] uppercase tracking-[0.3em]">
+                Operator
+              </span>
+            </div>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Navigation desktop */}
+          <div className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[#0F3D2E] hover:text-[#A8643A] transition-colors font-medium"
+                className="relative text-[#0F3D2E]/70 hover:text-[#0F3D2E] transition-colors text-sm uppercase tracking-[0.15em] group"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#A8643A] group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-            <a
-              href="#contact"
-              className="bg-[#0F3D2E] text-white px-6 py-3 rounded-lg hover:bg-[#A8643A] transition-all hover:scale-105"
-            >
-              Devis personnalisé
-            </a>
           </div>
+
+          {/* CTA Desktop */}
+          <a
+            href="#contact"
+            className="hidden md:inline-flex items-center gap-2 bg-[#0F3D2E] text-white px-6 py-3 text-sm uppercase tracking-[0.15em] hover:bg-[#A8643A] transition-all duration-300"
+          >
+            <span className="w-2 h-2 bg-[#C9A962] rounded-full" />
+            Devis gratuit
+          </a>
 
           {/* Mobile Menu Button */}
           <button
@@ -81,15 +91,15 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-gray-200 overflow-hidden"
+            className="md:hidden bg-white border-t border-[#0F3D2E]/10 overflow-hidden"
           >
-            <div className="px-4 py-4 space-y-3">
+            <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={handleLinkClick}
-                  className="block text-deltom-green hover:text-deltom-copper transition-colors font-medium py-2"
+                  className="block text-[#0F3D2E]/70 hover:text-[#A8643A] transition-colors uppercase tracking-[0.15em] text-sm py-2"
                 >
                   {link.label}
                 </a>
@@ -97,9 +107,9 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={handleLinkClick}
-                className="block w-full bg-[#0F3D2E] text-white px-6 py-3 rounded-lg hover:bg-[#A8643A] transition-all text-center"
+                className="block w-full text-center bg-[#0F3D2E] text-white px-6 py-3 uppercase tracking-[0.15em] text-sm hover:bg-[#A8643A] transition-all"
               >
-                Devis personnalisé
+                Devis gratuit
               </a>
             </div>
           </motion.div>
