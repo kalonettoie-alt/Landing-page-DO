@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
+import PatternBackground from './PatternBackground';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -9,6 +10,7 @@ export default function Contact() {
     email: '',
     phone: '',
     propertyType: 'T2',
+    propertyCount: '1 bien',
     city: '',
     message: '',
   });
@@ -31,8 +33,9 @@ export default function Contact() {
 
   if (submitted) {
     return (
-      <section id="contact" className="py-20 bg-[#F7F1ED]">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-20 bg-[#F7F1ED] relative overflow-hidden">
+        <PatternBackground />
+        <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -60,8 +63,9 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-deltom-cream">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 bg-[#F7F1ED] relative overflow-hidden">
+      <PatternBackground />
+      <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,6 +156,29 @@ export default function Contact() {
                 <option value="T3">T3</option>
                 <option value="T4">T4</option>
                 <option value="T5+">T5+</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="propertyCount"
+                className="block text-[#0F3D2E] font-semibold mb-2"
+              >
+                Nombre de biens
+              </label>
+              <select
+                id="propertyCount"
+                name="propertyCount"
+                value={formData.propertyCount}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-[#F7F1ED] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8643A] bg-white"
+              >
+                <option value="1 bien">1 bien</option>
+                <option value="2-5 biens">2-5 biens</option>
+                <option value="6-10 biens">6-10 biens</option>
+                <option value="11-20 biens">11-20 biens</option>
+                <option value="21-50 biens">21-50 biens</option>
+                <option value="50+ biens">50+ biens</option>
               </select>
             </div>
 

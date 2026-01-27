@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function AboutUs() {
   return (
-    <section id="histoire" className="py-20 bg-[#0F3D2E] relative overflow-hidden">
+    <section id="histoire" className="py-20 bg-[#0F3D2E] relative overflow-hidden rounded-t-[3rem] rounded-b-[3rem] mx-4 md:mx-8 lg:mx-16 my-8">
       {/* Titre décoratif en arrière-plan */}
       <div className="absolute inset-0 flex items-center justify-center opacity-5">
         <h2 className="font-serif text-8xl md:text-9xl text-white">

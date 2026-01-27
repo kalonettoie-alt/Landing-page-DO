@@ -56,7 +56,7 @@ export default function AdvantagesSwitcher() {
   const currentAdvantages = activeTab === 'conciergeries' ? conciergiesAdvantages : proprietairesAdvantages;
 
   return (
-    <section className="py-20 bg-[#0F3D2E]">
+    <section className="py-20 bg-[#0F3D2E] rounded-t-[3rem] rounded-b-[3rem] mx-4 md:mx-8 lg:mx-16 my-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

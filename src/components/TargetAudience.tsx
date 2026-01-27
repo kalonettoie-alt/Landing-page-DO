@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { TrendingUp, Moon } from 'lucide-react';
+import PatternBackground from './PatternBackground';
 
 export default function TargetAudience() {
   const audiences = [
@@ -22,8 +23,9 @@ export default function TargetAudience() {
   ];
 
   return (
-    <section id="solutions" className="py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="solutions" className="py-32 bg-white relative overflow-hidden">
+      <PatternBackground />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

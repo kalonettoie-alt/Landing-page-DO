@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import PatternBackground from './PatternBackground';
 
 export default function Differentiators() {
   const [openIndex, setOpenIndex] = useState<number>(0);
@@ -29,8 +30,9 @@ export default function Differentiators() {
   ];
 
   return (
-    <section id="outils" className="py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="outils" className="py-20 bg-white relative overflow-hidden">
+      <PatternBackground />
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

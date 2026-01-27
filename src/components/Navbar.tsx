@@ -21,8 +21,29 @@ export default function Navbar() {
     { label: 'Notre Histoire', href: '#histoire' },
   ];
 
-  const handleLinkClick = () => {
-    setIsMobileMenuOpen(false);
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isMobileMenuOpen) {
+      e.preventDefault();
+      const href = e.currentTarget.getAttribute('href');
+      setIsMobileMenuOpen(false);
+
+      // Attendre la fermeture du menu avant de scroller
+      setTimeout(() => {
+        if (href) {
+          const element = document.querySelector(href);
+          if (element) {
+            const navbarHeight = 96; // h-24 = 96px
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navbarHeight;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }, 300); // Correspond à la durée de l'animation de fermeture
+    }
   };
 
   return (
@@ -98,7 +119,7 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={handleLinkClick}
+                  onClick={(e) => handleLinkClick(e)}
                   className="block text-[#0F3D2E]/70 hover:text-[#A8643A] transition-colors uppercase tracking-[0.15em] text-sm py-2"
                 >
                   {link.label}
@@ -106,7 +127,7 @@ export default function Navbar() {
               ))}
               <a
                 href="#contact"
-                onClick={handleLinkClick}
+                onClick={(e) => handleLinkClick(e)}
                 className="block w-full text-center bg-[#0F3D2E] text-white px-6 py-3 uppercase tracking-[0.15em] text-sm hover:bg-[#A8643A] transition-all"
               >
                 Devis gratuit

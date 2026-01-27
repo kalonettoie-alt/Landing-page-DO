@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import PatternBackground from './PatternBackground';
 
 type PropertyType = 'Studio' | 'T2' | 'T3' | 'T4';
 
@@ -21,8 +22,9 @@ export default function Pricing() {
     : currentPricing.essentiel;
 
   return (
-    <section id="tarifs" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="tarifs" className="py-20 bg-white relative overflow-hidden">
+      <PatternBackground />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -21,7 +21,7 @@ export default function ProofGrid() {
   ];
 
   return (
-    <section className="py-32 bg-[#0F3D2E] relative overflow-hidden">
+    <section className="py-32 bg-[#0F3D2E] relative overflow-hidden rounded-t-[3rem] rounded-b-[3rem] mx-4 md:mx-8 lg:mx-16 my-8">
       {/* Texture subtile */}
       <div className="absolute inset-0 opacity-5">
         <div
