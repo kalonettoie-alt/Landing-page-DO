@@ -46,14 +46,14 @@ export default function ProofGrid() {
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-20">
-            <span className="inline-block text-[#C9A962] uppercase tracking-[0.4em] text-xs mb-6">
-              Témoignages
-            </span>
-            <h2 className="font-serif text-4xl md:text-6xl text-white">
-              Ce que disent
+            <h2 className="font-serif text-4xl md:text-6xl text-white mb-4 lowercase">
+              une idée concrète de
               <br />
-              <span className="italic text-[#C9A962]">nos clients</span>
+              <span className="italic text-[#C9A962]">notre travail</span>
             </h2>
+            <p className="text-white/70 text-lg">
+              L'excellence opérationnelle certifiée par nos clients.
+            </p>
           </div>
 
           {/* Grille de témoignages */}

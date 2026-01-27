@@ -2,10 +2,10 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Benefits from './components/Benefits';
 import TargetAudience from './components/TargetAudience';
-import AdvantagesSwitcher from './components/AdvantagesSwitcher';
-import Differentiators from './components/Differentiators';
-import ProofGrid from './components/ProofGrid';
+import Differentiation from './components/Differentiation';
+import Method from './components/Method';
 import Pricing from './components/Pricing';
+import ProofGrid from './components/ProofGrid';
 import AboutUs from './components/AboutUs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -18,10 +18,10 @@ function App() {
       <Hero />
       <Benefits />
       <TargetAudience />
-      <AdvantagesSwitcher />
-      <Differentiators />
-      <ProofGrid />
+      <Differentiation />
+      <Method />
       <Pricing />
+      <ProofGrid />
       <AboutUs />
       <Contact />
       <Footer />

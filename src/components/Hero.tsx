@@ -31,7 +31,7 @@ export default function Hero() {
           >
             <span className="w-8 h-px bg-[#C9A962]" />
             <span className="text-[#A8643A] uppercase tracking-[0.3em] text-xs font-medium">
-              Excellence Opérationnelle
+              Infrastructure Opérationnelle LCD
             </span>
             <span className="w-8 h-px bg-[#C9A962]" />
           </motion.div>
@@ -43,9 +43,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            Pilotez votre activité
+            Pilotez votre activité sereinement,
             <br />
-            <span className="italic text-[#A8643A]">sereinement.</span>
+            <span className="italic text-[#A8643A]">on s'occupe du reste.</span>
           </motion.h1>
 
           {/* Séparateur élégant */}
@@ -59,14 +59,22 @@ export default function Hero() {
 
           {/* Sous-titre */}
           <motion.p
-            className="text-xl md:text-2xl text-[#0F3D2E]/70 mb-12 max-w-xl font-light leading-relaxed"
+            className="text-xl md:text-2xl text-[#0F3D2E]/70 mb-4 max-w-3xl font-light leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.8 }}
           >
-            Votre partenaire terrain pour une gestion{' '}
-            <span className="text-[#0F3D2E] font-medium">impeccable</span> de vos
-            locations.
+            Votre partenaire terrain pour une gestion impeccable de vos
+            locations courte durée.
+          </motion.p>
+
+          <motion.p
+            className="text-lg md:text-xl text-[#A8643A] mb-12 font-medium"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
+            Qualité. Traçabilité. Réactivité.
           </motion.p>
 
           {/* CTA avec style premium */}

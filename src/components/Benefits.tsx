@@ -153,17 +153,6 @@ export default function Benefits() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-center mb-20">
-            <span className="inline-block text-[#A8643A] uppercase tracking-[0.4em] text-xs mb-6">
-              Bénéfices
-            </span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#0F3D2E]">
-              Pourquoi choisir
-              <br />
-              <span className="italic text-[#A8643A]">Deltom Operator ?</span>
-            </h2>
-          </div>
-
           {/* Grille de bénéfices */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (

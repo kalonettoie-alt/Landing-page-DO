@@ -9,7 +9,7 @@ export default function TargetAudience() {
       title: 'Conciergeries',
       subtitle: 'Scalable & Fiable',
       description:
-        'Libérez-vous des contraintes du recrutement et de la gestion du personnel. Scalez votre parc sans friction. Passez de 10 à 100 logements.',
+        'Libérez-vous du recrutement et de la gestion terrain. Passez de 10 à 100 logements sans friction.',
       number: '01',
     },
     {
@@ -52,7 +52,7 @@ export default function TargetAudience() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 whileHover={{ y: -8 }}
-                className="group relative bg-white p-10 overflow-hidden cursor-pointer"
+                className="group relative bg-white hover:bg-[#0F3D2E] p-10 overflow-hidden cursor-pointer transition-colors duration-500"
               >
                 {/* Bordure subtile */}
                 <div className="absolute inset-0 border border-[#0F3D2E]/10 group-hover:border-[#A8643A]/30 transition-colors duration-500" />
@@ -70,16 +70,16 @@ export default function TargetAudience() {
 
                 {/* Contenu */}
                 <div className="relative">
-                  <div className="w-12 h-12 border border-[#A8643A]/30 rounded-full flex items-center justify-center mb-6 group-hover:border-[#A8643A] group-hover:bg-[#A8643A]/5 transition-all duration-300">
-                    <audience.icon className="w-5 h-5 text-[#A8643A]" />
+                  <div className="w-12 h-12 border border-[#A8643A]/30 rounded-full flex items-center justify-center mb-6 group-hover:border-white group-hover:bg-white/10 transition-all duration-300">
+                    <audience.icon className="w-5 h-5 text-[#A8643A] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="font-serif text-2xl text-[#0F3D2E] mb-3">
+                  <h3 className="font-serif text-2xl text-[#0F3D2E] group-hover:text-white mb-3 transition-colors duration-300">
                     {audience.title}
                   </h3>
-                  <p className="text-[#A8643A] uppercase tracking-[0.2em] text-xs mb-4">
+                  <p className="text-[#A8643A] group-hover:text-[#C9A962] uppercase tracking-[0.2em] text-xs mb-4 transition-colors duration-300">
                     {audience.subtitle}
                   </p>
-                  <p className="text-[#0F3D2E]/60 leading-relaxed">
+                  <p className="text-[#0F3D2E]/60 group-hover:text-white/90 leading-relaxed transition-colors duration-300">
                     {audience.description}
                   </p>
                 </div>
