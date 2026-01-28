@@ -10,10 +10,10 @@ export default function Pricing() {
   const [includeLaundry, setIncludeLaundry] = useState(false);
 
   const pricing = {
-    Studio: { execute: 43, laundry: 14, operate: 55 },
-    T2: { execute: 55, laundry: 16, operate: 65 },
-    T3: { execute: 67, laundry: 18, operate: 75 },
-    T4: { execute: 79, laundry: 20, operate: 85 },
+    Studio: { execute: 43, laundry: 14, operate: 59 },
+    T2: { execute: 55, laundry: 16, operate: 69 },
+    T3: { execute: 67, laundry: 18, operate: 79 },
+    T4: { execute: 79, laundry: 20, operate: 89 },
   };
 
   const currentPricing = pricing[selectedType];
@@ -153,10 +153,10 @@ export default function Pricing() {
               transition={{ duration: 0.6 }}
               className="bg-[#0F3D2E] rounded-2xl p-8 relative overflow-hidden hover:shadow-2xl transition-shadow"
             >
-              {/* Badge Recommandé */}
+              {/* Badge Idéal pour scaler */}
               <div className="absolute top-4 right-4 bg-[#C9A962] text-white text-xs uppercase tracking-wider px-3 py-1 rounded-full font-semibold flex items-center gap-1">
                 <Star className="w-3 h-3 fill-current" />
-                Recommandé
+                Idéal pour scaler
               </div>
 
               <div className="mb-6">
