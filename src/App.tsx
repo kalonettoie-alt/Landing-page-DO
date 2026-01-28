@@ -4,6 +4,7 @@ import Benefits from './components/Benefits';
 import TargetAudience from './components/TargetAudience';
 import AdvantagesSwitcher from './components/AdvantagesSwitcher';
 import Method from './components/Method';
+import CityOperator from './components/CityOperator';
 import Pricing from './components/Pricing';
 import ProofGrid from './components/ProofGrid';
 import Differentiation from './components/Differentiation';
@@ -21,6 +22,7 @@ function App() {
       <TargetAudience />
       <AdvantagesSwitcher />
       <Method />
+      <CityOperator />
       <Pricing />
       <ProofGrid />
       <Differentiation />
