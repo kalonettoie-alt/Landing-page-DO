@@ -8,7 +8,7 @@ export default function CityOperator() {
   const [activeTab, setActiveTab] = useState<TabType>('operators');
 
   return (
-    <section className="py-20 bg-[#F7F1ED] relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 bg-[#F7F1ED] relative overflow-hidden">
       <PatternBackground />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,24 +18,24 @@ export default function CityOperator() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12 px-2"
         >
-          <span className="text-[#A8643A] uppercase tracking-[0.2em] text-sm font-medium">
+          <span className="text-[#A8643A] uppercase tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm font-medium">
             Notre équipe
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0F3D2E] mt-4">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#0F3D2E] mt-3 md:mt-4 leading-tight">
             Une infrastructure humaine<br />
             <span className="text-[#A8643A] italic">à votre service</span>
           </h2>
         </motion.div>
 
         {/* Toggle Switcher */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex bg-white rounded-full p-1.5 shadow-lg border border-[#E8DED6]">
+        <div className="flex justify-center mb-8 md:mb-12">
+          <div className="inline-flex bg-white rounded-full p-1 sm:p-1.5 shadow-lg border border-[#E8DED6] w-full max-w-xs sm:max-w-none sm:w-auto">
             <button
               onClick={() => setActiveTab('operators')}
               className={`
-                px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300
+                flex-1 sm:flex-none px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300
                 ${activeTab === 'operators'
                   ? 'bg-[#0F3D2E] text-white shadow-md'
                   : 'text-[#0F3D2E]/70 hover:text-[#0F3D2E]'
@@ -47,7 +47,7 @@ export default function CityOperator() {
             <button
               onClick={() => setActiveTab('cityoperator')}
               className={`
-                px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300
+                flex-1 sm:flex-none px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300
                 ${activeTab === 'cityoperator'
                   ? 'bg-[#0F3D2E] text-white shadow-md'
                   : 'text-[#0F3D2E]/70 hover:text-[#0F3D2E]'
@@ -74,15 +74,15 @@ export default function CityOperator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="text-center mt-12"
+          className="text-center mt-8 md:mt-12 px-4"
         >
           <a
             href="#tarifs"
-            className="inline-flex items-center gap-3 bg-[#0F3D2E] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#A8643A] transition-all group"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#0F3D2E] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-[#A8643A] transition-all group text-sm sm:text-base w-full sm:w-auto"
           >
             Découvrir nos offres
             <svg
-              className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+              className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -106,16 +106,16 @@ function OperatorsContent() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.4 }}
-      className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-[#E8DED6]"
+      className="bg-white/70 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 border border-[#E8DED6]"
     >
-      <div className="grid md:grid-cols-2 gap-10 items-center">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10 items-center">
 
         {/* Illustration Opérateur nettoyage */}
         <div className="flex justify-center">
           <div className="relative">
             <svg
               viewBox="0 0 240 340"
-              className="w-52 md:w-64 h-auto"
+              className="w-36 sm:w-44 md:w-52 lg:w-64 h-auto"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -175,19 +175,19 @@ function OperatorsContent() {
             </svg>
 
             {/* Éléments décoratifs */}
-            <div className="absolute -top-4 -right-4 w-10 h-10 border-2 border-[#C9A962] rounded-full opacity-40" />
-            <div className="absolute -bottom-2 -left-6 w-14 h-14 border-2 border-[#A8643A] rounded-full opacity-25" />
+            <div className="hidden sm:block absolute -top-4 -right-4 w-10 h-10 border-2 border-[#C9A962] rounded-full opacity-40" />
+            <div className="hidden sm:block absolute -bottom-2 -left-6 w-14 h-14 border-2 border-[#A8643A] rounded-full opacity-25" />
           </div>
         </div>
 
         {/* Texte */}
-        <div>
-          <h3 className="font-serif text-3xl md:text-4xl text-[#0F3D2E] mb-6">
+        <div className="text-center md:text-left">
+          <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#0F3D2E] mb-4 md:mb-6">
             Nos Opérateurs,<br />
             <span className="text-[#A8643A] italic">votre tranquillité.</span>
           </h3>
 
-          <div className="space-y-4 text-[#0F3D2E]/80 leading-relaxed">
+          <div className="space-y-3 sm:space-y-4 text-[#0F3D2E]/80 text-sm sm:text-base leading-relaxed">
             <p>
               Nos <strong className="text-[#0F3D2E]">opérateurs terrain</strong> sont des
               professionnels formés aux standards de la location courte durée :
@@ -208,11 +208,11 @@ function OperatorsContent() {
           </div>
 
           {/* Tags */}
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 md:mt-8 flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3">
             {['Formés LCD', 'Équipés pro', 'Véhiculés', 'Fiables', 'Traçabilité'].map((tag) => (
               <span
                 key={tag}
-                className="px-4 py-2 bg-[#0F3D2E]/10 text-[#0F3D2E] text-sm rounded-full font-medium"
+                className="px-3 sm:px-4 py-1.5 sm:py-2 bg-[#0F3D2E]/10 text-[#0F3D2E] text-xs sm:text-sm rounded-full font-medium whitespace-nowrap"
               >
                 {tag}
               </span>
@@ -234,20 +234,20 @@ function CityOperatorContent() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.4 }}
-      className="bg-[#0F3D2E] rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      className="bg-[#0F3D2E] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 relative overflow-hidden"
     >
       {/* Cercles décoratifs */}
-      <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#A8643A]/20 rounded-full blur-3xl" />
-      <div className="absolute -bottom-12 -left-12 w-36 h-36 bg-[#C9A962]/15 rounded-full blur-2xl" />
+      <div className="absolute -top-10 sm:-top-16 -right-10 sm:-right-16 w-32 sm:w-48 h-32 sm:h-48 bg-[#A8643A]/20 rounded-full blur-3xl" />
+      <div className="absolute -bottom-8 sm:-bottom-12 -left-8 sm:-left-12 w-24 sm:w-36 h-24 sm:h-36 bg-[#C9A962]/15 rounded-full blur-2xl" />
 
-      <div className="relative grid md:grid-cols-2 gap-10 items-center">
+      <div className="relative flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10 items-center">
 
         {/* Illustration City Operator */}
         <div className="flex justify-center order-1 md:order-none">
           <div className="relative">
             <svg
               viewBox="0 0 240 340"
-              className="w-52 md:w-64 h-auto"
+              className="w-36 sm:w-44 md:w-52 lg:w-64 h-auto"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -310,23 +310,23 @@ function CityOperatorContent() {
             </svg>
 
             {/* Éléments décoratifs */}
-            <div className="absolute -top-4 -right-4 w-10 h-10 border-2 border-[#C9A962] rounded-full opacity-50" />
-            <div className="absolute -bottom-2 -left-6 w-14 h-14 border-2 border-white/30 rounded-full" />
+            <div className="hidden sm:block absolute -top-4 -right-4 w-10 h-10 border-2 border-[#C9A962] rounded-full opacity-50" />
+            <div className="hidden sm:block absolute -bottom-2 -left-6 w-14 h-14 border-2 border-white/30 rounded-full" />
           </div>
         </div>
 
         {/* Texte */}
-        <div className="order-2 md:order-none">
-          <div className="inline-block px-4 py-1.5 bg-[#C9A962] text-[#0F3D2E] text-xs rounded-full font-bold uppercase tracking-wider mb-6">
+        <div className="order-2 md:order-none text-center md:text-left">
+          <div className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-[#C9A962] text-[#0F3D2E] text-[10px] sm:text-xs rounded-full font-bold uppercase tracking-wider mb-4 md:mb-6">
             Offre "On opère"
           </div>
 
-          <h3 className="font-serif text-3xl md:text-4xl text-white mb-6">
+          <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-white mb-4 md:mb-6">
             Votre City Operator,<br />
             <span className="text-[#C9A962] italic">sans le recruter.</span>
           </h3>
 
-          <div className="space-y-4 text-white/80 leading-relaxed">
+          <div className="space-y-3 sm:space-y-4 text-white/80 text-sm sm:text-base leading-relaxed">
             <p>
               Un <strong className="text-white">City Operator</strong> (ou Coordinateur terrain),
               c'est la personne qui gère l'opérationnel au quotidien pour une conciergerie :
@@ -349,8 +349,8 @@ function CityOperatorContent() {
           </div>
 
           {/* Citation */}
-          <div className="mt-8 p-5 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-            <p className="text-[#C9A962] italic font-medium">
+          <div className="mt-6 md:mt-8 p-4 sm:p-5 bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-white/20">
+            <p className="text-[#C9A962] italic text-sm sm:text-base font-medium">
               "Vous développez votre activité en Île-de-France, on gère le terrain.
               Sans embauche, sans formation, sans friction."
             </p>
