@@ -18,11 +18,11 @@ function App() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <CityOperator />
       <Benefits />
       <TargetAudience />
       <AdvantagesSwitcher />
       <Method />
-      <CityOperator />
       <Pricing />
       <ProofGrid />
       <Differentiation />

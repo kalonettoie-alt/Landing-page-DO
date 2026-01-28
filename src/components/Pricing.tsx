@@ -10,10 +10,10 @@ export default function Pricing() {
   const [includeLaundry, setIncludeLaundry] = useState(false);
 
   const pricing = {
-    Studio: { execute: 43, laundry: 14, operate: 59 },
-    T2: { execute: 55, laundry: 16, operate: 69 },
-    T3: { execute: 67, laundry: 18, operate: 79 },
-    T4: { execute: 79, laundry: 20, operate: 89 },
+    Studio: { execute: 43, laundry: 14, operate: 55 },
+    T2: { execute: 55, laundry: 16, operate: 65 },
+    T3: { execute: 67, laundry: 18, operate: 75 },
+    T4: { execute: 79, laundry: 20, operate: 85 },
   };
 
   const currentPricing = pricing[selectedType];
