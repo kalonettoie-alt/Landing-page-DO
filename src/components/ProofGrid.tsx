@@ -4,13 +4,6 @@ import { Star, ExternalLink } from 'lucide-react';
 export default function ProofGrid() {
   const testimonials = [
     {
-      title: 'Chic & Cozy • Aux Portes de Paris',
-      rating: 5,
-      badge: 'Note de propreté 5/5',
-      quote: 'Excellent séjour. Conforme en tout point au détail du site. Merci.',
-      link: 'https://www.airbnb.fr/rooms/1278780558559172214',
-    },
-    {
       title: 'Appartement cosy proche Paris & Disneyland',
       rating: 5,
       badge: 'Note de propreté 5/5',
