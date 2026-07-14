@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/mentions-legales", "destination": "/legal" },
+    { "source": "/cgv", "destination": "/legal" },
+    { "source": "/confidentialite", "destination": "/legal" }
+  ]
+}

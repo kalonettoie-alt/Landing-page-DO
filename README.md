@@ -1,130 +1,62 @@
-# Deltom Operator - Landing Page
+# Deltom Operator — site vitrine
 
-Landing page professionnelle pour **Deltom Operator**, une entreprise familiale spécialisée dans les services opérationnels pour la location courte durée (Airbnb, Booking).
+Site vitrine de **DELTOM GROUPE SAS** — plateforme de coordination entre hôtes de
+locations courte durée (Airbnb, Booking) et opérateurs de ménage indépendants, en
+Île-de-France.
 
-## 🚀 Technologies
+> Deltom ne réalise pas les prestations : elle organise, coordonne et facture pour le
+> compte des opérateurs (mandat de facturation).
 
-- **React 18** avec TypeScript
-- **Vite** comme bundler
-- **Tailwind CSS v4** pour le styling
-- **Framer Motion** pour les animations
-- **Lucide React** pour les icônes
+## Stack
 
-## 🎨 Design
+- **React 19** + **TypeScript**
+- **Vite 7** — build **multi-pages (MPA)**, une vraie URL par page (pas de routing client)
+- **CSS maison** avec design system (tokens dans `src/styles/site.css`)
+- **Polices auto-hébergées** via `@fontsource` (Plus Jakarta Sans + JetBrains Mono) — aucune requête Google Fonts (RGPD)
+- **lottie-react** pour l'animation produit (bundlée, pas de CDN externe)
 
-### Palette de couleurs
+## Pages
 
-```js
-{
-  'deltom-green': '#0F3D2E',   // Vert foncé principal
-  'deltom-cream': '#F7F1ED',   // Beige/crème (fond)
-  'deltom-copper': '#A8643A',  // Cuivre (accent)
-  'deltom-gray': '#A0A0A0',    // Gris (texte secondaire)
-}
-```
+| URL | Fichier HTML | Composant |
+| --- | --- | --- |
+| `/` | `index.html` | `src/pages/Accueil.tsx` (estimateur interactif) |
+| `/comment-ca-marche` | `comment-ca-marche.html` | `src/pages/CommentCaMarche.tsx` |
+| `/tarifs` | `tarifs.html` | `src/pages/Tarifs.tsx` (charge `public/prices.json`) |
+| `/devenir-operateur` | `devenir-operateur.html` | `src/pages/DevenirOperateur.tsx` (formulaire 3 étapes) |
+| `/a-propos` | `a-propos.html` | `src/pages/APropos.tsx` |
+| `/legal` | `legal.html` | `src/pages/Legal.tsx` |
 
-### Typographies
+### Pages légales
 
-- **Titres** : Playfair Display (serif)
-- **Corps** : Inter (sans-serif)
+Le juridique est **rapatrié sur le site** (aucun lien vers `legal.deltomops.com`).
+`legal.html` est une page unique (sidebar + 3 sections). Trois URLs propres pointent
+dessus via des rewrites (`vercel.json`) et scrollent à la bonne section :
 
-## 📄 Structure
+- `/mentions-legales` → section « Mentions légales »
+- `/cgv` → section « CGU / CGV » (ancres `#facturation`, `#remboursement`)
+- `/confidentialite` → section « Politique de confidentialité »
 
-La landing page est composée de **10 sections** :
+## Configuration à connaître
 
-1. **Navbar** - Navigation fixe avec menu hamburger mobile
-2. **Hero** - Section d'accueil avec CTA
-3. **Target Audience** - Solutions pour Conciergeries et Propriétaires
-4. **Advantages Switcher** - Avantages avec système d'onglets
-5. **Differentiators** - Accordéon pour les différenciateurs
-6. **Proof Grid** - Témoignages clients Airbnb
-7. **Pricing** - Tarification dynamique (Studio, T2, T3, T4)
-8. **About Us** - Histoire de l'entreprise
-9. **Contact** - Formulaire de contact avec validation
-10. **Footer** - Pied de page avec liens
+- **`public/prices.json`** — source unique des tarifs (ménage, blanchisserie, consommables).
+  Éditable sans rebuild : Tarifs **et** l'estimateur de l'accueil le lisent au runtime.
+- **`src/lib/config.ts`** — email de contact, WhatsApp, mentions société, et
+  **`FORMSPREE_OPERATEUR_ENDPOINT`** : ⚠️ endpoint Formspree dédié aux candidatures
+  opérateurs, à remplacer par l'ID réel avant la mise en production (tant qu'il vaut
+  `CHANGEME`, la soumission est simulée).
+- **Balise Google Search Console** : conservée dans `index.html` (`google-site-verification`).
 
-## 🛠️ Installation
+## Déploiement
+
+Vercel. Branche de production : `claude/deltom-operator-landing-dmQ0x` → `www.deltomops.com`.
+Config de build auto-détectée (Vite → `dist/`). `vercel.json` gère `cleanUrls` et les
+rewrites des pages légales.
+
+## Développement
 
 ```bash
-# Installer les dépendances
 npm install
-
-# Lancer le serveur de développement
-npm run dev
-
-# Build pour la production
-npm run build
-
-# Prévisualiser le build de production
-npm run preview
+npm run dev      # serveur de dev
+npm run build    # tsc -b && vite build → dist/
+npm run preview  # prévisualiser le build
 ```
-
-## 📦 Structure des fichiers
-
-```
-src/
-├── components/
-│   ├── Navbar.tsx
-│   ├── Hero.tsx
-│   ├── TargetAudience.tsx
-│   ├── AdvantagesSwitcher.tsx
-│   ├── Differentiators.tsx
-│   ├── ProofGrid.tsx
-│   ├── Pricing.tsx
-│   ├── AboutUs.tsx
-│   ├── Contact.tsx
-│   ├── Footer.tsx
-│   └── WhatsAppButton.tsx
-├── App.tsx
-├── index.css
-└── main.tsx
-```
-
-## ✨ Fonctionnalités
-
-- ✅ Responsive mobile-first
-- ✅ Animations scroll reveal avec Framer Motion
-- ✅ Smooth scroll avec compensation navbar
-- ✅ Formulaire de contact avec validation
-- ✅ Système de tarification dynamique
-- ✅ Accordéon pour les différenciateurs
-- ✅ Tabs switcher pour les avantages
-- ✅ Bouton WhatsApp flottant
-- ✅ SEO optimisé avec meta tags
-- ✅ Menu mobile avec fermeture automatique
-
-## 🎯 SEO
-
-Le site est optimisé pour le référencement avec :
-- Meta tags descriptifs
-- Open Graph pour les réseaux sociaux
-- Structure sémantique HTML
-- Images optimisées
-- Texte alternatif pour l'accessibilité
-
-## 📱 Responsive
-
-Le design est entièrement responsive avec des breakpoints adaptés :
-- Mobile : < 768px
-- Tablet : 768px - 1024px
-- Desktop : > 1024px
-
-## 🌐 Déploiement
-
-Le projet peut être déployé sur :
-- Vercel
-- Netlify
-- GitHub Pages
-- AWS Amplify
-
-Pour déployer, il suffit de :
-1. Build le projet : `npm run build`
-2. Déployer le dossier `dist/`
-
-## 📝 License
-
-© 2025 Deltom Operator. Built for excellence.
-
----
-
-**Développé avec ❤️ pour Deltom Operator**
