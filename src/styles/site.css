@@ -37,14 +37,14 @@
   --mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono',
     Menlo, 'Roboto Mono', monospace;
 
-  --maxw: 1280px;
+  --maxw: 1360px;
   --pad: 64px;
 }
 
 /* Grands écrans : le contenu occupe davantage l'espace au lieu de rester une
    colonne étroite au centre (paliers progressifs, sans lignes de texte trop longues). */
-@media (min-width: 1536px) { :root { --maxw: 1400px; --pad: 72px; } }
-@media (min-width: 1800px) { :root { --maxw: 1520px; --pad: 88px; } }
+@media (min-width: 1536px) { :root { --maxw: 1520px; --pad: 72px; } }
+@media (min-width: 1800px) { :root { --maxw: 1640px; --pad: 96px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -122,10 +122,10 @@ h1, h2, h3, h4 { margin: 0; color: var(--ink); }
   max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); height: 76px;
   display: flex; align-items: center; gap: 4px;
 }
-.nav-links-desktop { display: flex; align-items: center; gap: 4px; }
+.nav-links-desktop { display: flex; align-items: center; gap: 8px; }
 .nav-link {
   font-size: 14.5px; font-weight: 500; color: var(--body);
-  padding: 8px 12px; white-space: nowrap;
+  padding: 8px 14px; white-space: nowrap;
 }
 .nav-link:hover { color: var(--ink); }
 .nav-link.active { font-weight: 600; color: var(--ink); border-bottom: 2px solid var(--gold); }
