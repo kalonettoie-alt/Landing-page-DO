@@ -23,8 +23,10 @@
   --cream: #F8F6F0; --calm: #F8F7F4; --hair: #F0EFEC; --line: #E3E2DE; --pill: #F5F4F1;
   --sans: 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
-  --maxw: 1200px; --pad: 64px;
+  --maxw: 1280px; --pad: 64px;
 }
+@media (min-width: 1536px) { :root { --maxw: 1400px; --pad: 72px; } }
+@media (min-width: 1800px) { :root { --maxw: 1520px; --pad: 88px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }

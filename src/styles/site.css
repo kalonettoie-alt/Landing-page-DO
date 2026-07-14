@@ -37,9 +37,14 @@
   --mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono',
     Menlo, 'Roboto Mono', monospace;
 
-  --maxw: 1200px;
+  --maxw: 1280px;
   --pad: 64px;
 }
+
+/* Grands écrans : le contenu occupe davantage l'espace au lieu de rester une
+   colonne étroite au centre (paliers progressifs, sans lignes de texte trop longues). */
+@media (min-width: 1536px) { :root { --maxw: 1400px; --pad: 72px; } }
+@media (min-width: 1800px) { :root { --maxw: 1520px; --pad: 88px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 
