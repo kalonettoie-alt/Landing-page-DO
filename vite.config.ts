@@ -15,6 +15,7 @@ export default defineConfig({
         tarifs: resolve(__dirname, 'tarifs.html'),
         'devenir-operateur': resolve(__dirname, 'devenir-operateur.html'),
         'a-propos': resolve(__dirname, 'a-propos.html'),
+        contact: resolve(__dirname, 'contact.html'),
       },
     },
   },

@@ -14,6 +14,9 @@ export const SOCIETE = {
 // (distinct de l'endpoint « demandes hôtes » — on ne mélange pas les deux boîtes)
 export const FORMSPREE_OPERATEUR_ENDPOINT = 'https://formspree.io/f/mwvgpkna';
 
+// Endpoint Formspree des DEMANDES HÔTES (formulaire de contact /contact).
+export const FORMSPREE_CONTACT_ENDPOINT = 'https://formspree.io/f/mqeqwkqz';
+
 export function mailto(subject?: string): string {
   return subject
     ? `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`

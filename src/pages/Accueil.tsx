@@ -5,7 +5,6 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import CleaningLottie from '../components/CleaningLottie';
 import SupervisionBlock from '../components/SupervisionBlock';
 import { usePrices } from '../lib/prices';
-import { mailto } from '../lib/config';
 
 const KPIS = [
   { n: '68', l: 'logements coordonnés' },
@@ -67,7 +66,7 @@ function Estimateur() {
         <span style={{ fontSize: 44, fontWeight: 700, letterSpacing: '-0.025em', color: 'var(--ink)' }}>{priceFor(sel)}</span>
         <span style={{ fontSize: 14.5, color: 'var(--body)' }}>TTC par intervention, tout compris</span>
       </div>
-      <a href={mailto('Confier mon premier logement')} className="btn btn-primary btn-block" style={{ padding: '14px 22px', borderRadius: 10, fontSize: 15 }}>
+      <a href="/contact?objet=logement" className="btn btn-primary btn-block" style={{ padding: '14px 22px', borderRadius: 10, fontSize: 15 }}>
         Confier mon premier logement
       </a>
       <div style={{ marginTop: 14, fontSize: 12.5, color: 'var(--muted)' }}>
@@ -95,8 +94,8 @@ export default function Accueil() {
               facturation propre. Deltom coordonne tout, vous ne touchez à rien.
             </p>
             <div style={{ display: 'flex', gap: 12, marginBottom: 28, flexWrap: 'wrap' }}>
-              <a href={mailto()} className="btn btn-primary">Nous contacter</a>
-              <a href={mailto('Demande de démonstration Deltom')} className="btn btn-secondary">Demander une démonstration</a>
+              <a href="/contact" className="btn btn-primary">Nous contacter</a>
+              <a href="/contact?objet=demo" className="btn btn-secondary">Demander une démonstration</a>
             </div>
             <div style={{ display: 'flex', gap: 20, fontSize: 13.5, color: 'var(--muted)', flexWrap: 'wrap' }}>
               <span>Sans engagement</span><span>·</span><span>Prix fixes TTC</span><span>·</span><span>Facture groupée toutes les deux semaines</span>
@@ -266,8 +265,8 @@ export default function Accueil() {
           <h2 style={{ fontSize: 40, fontWeight: 700, letterSpacing: '-0.028em', marginBottom: 14 }}>Aucun ménage oublié.</h2>
           <p className="cta-sub">C'est un mécanisme vérifiable, pas un slogan.</p>
           <div className="cta-row">
-            <a href={mailto()} className="btn btn-on-dark">Nous contacter</a>
-            <a href={mailto('Demande de démonstration Deltom')} className="btn btn-ghost-dark">Demander une démonstration</a>
+            <a href="/contact" className="btn btn-on-dark">Nous contacter</a>
+            <a href="/contact?objet=demo" className="btn btn-ghost-dark">Demander une démonstration</a>
           </div>
         </div>
       </section>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Wordmark from './Wordmark';
-import { mailto } from '../lib/config';
 
 type PageKey = 'comment' | 'tarifs' | 'operateur' | 'apropos' | null;
 
@@ -22,7 +21,7 @@ export default function Nav({ active = null, cta = 'contact' }: { active?: PageK
     cta === 'postuler' ? (
       <a href="#candidature" className="nav-cta">Postuler</a>
     ) : (
-      <a href={mailto()} className="nav-cta">Nous contacter</a>
+      <a href="/contact" className="nav-cta">Nous contacter</a>
     );
 
   return (
@@ -41,7 +40,7 @@ export default function Nav({ active = null, cta = 'contact' }: { active?: PageK
           </div>
           <div className="nav-spacer" />
           {cta === 'postuler' && (
-            <a href={mailto()} className="nav-link nav-cta-desktop" style={{ marginRight: 4 }}>Nous contacter</a>
+            <a href="/contact" className="nav-link nav-cta-desktop" style={{ marginRight: 4 }}>Nous contacter</a>
           )}
           <span className="nav-cta-desktop">{ctaEl}</span>
 
@@ -69,7 +68,7 @@ export default function Nav({ active = null, cta = 'contact' }: { active?: PageK
           {LINKS.map((l) => (
             <a key={l.key} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
-          <a href={mailto()} className="nav-cta" onClick={() => setOpen(false)}>Nous contacter</a>
+          <a href="/contact" className="nav-cta" onClick={() => setOpen(false)}>Nous contacter</a>
         </div>
       )}
     </>

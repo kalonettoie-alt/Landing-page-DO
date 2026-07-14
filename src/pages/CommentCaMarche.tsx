@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import CleaningLottie from '../components/CleaningLottie';
 import SupervisionBlock from '../components/SupervisionBlock';
-import { mailto } from '../lib/config';
 
 export default function CommentCaMarche() {
   return (
@@ -126,8 +125,8 @@ export default function CommentCaMarche() {
           <h2 style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.028em', marginBottom: 12 }}>Une expérience vaut mieux que mille mots.</h2>
           <p className="cta-sub">Demandez un essai gratuit sur votre premier logement.</p>
           <div className="cta-row">
-            <a href={mailto()} className="btn btn-on-dark">Nous contacter</a>
-            <a href={mailto('Demande de démonstration Deltom')} className="btn btn-ghost-dark">Demander une démonstration</a>
+            <a href="/contact" className="btn btn-on-dark">Nous contacter</a>
+            <a href="/contact?objet=demo" className="btn btn-ghost-dark">Demander une démonstration</a>
           </div>
         </div>
       </section>

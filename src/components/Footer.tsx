@@ -38,6 +38,7 @@ export default function Footer() {
         <div>
           <div className="foot-head">Contact</div>
           <div className="foot-col-links">
+            <a href="/contact" className="foot-link">Nous contacter</a>
             <a href={mailto()} className="foot-link">{CONTACT_EMAIL}</a>
             <span className="foot-link muted">Ormesson-sur-Marne, Île-de-France</span>
           </div>

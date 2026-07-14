@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
-import { mailto } from '../lib/config';
 
 export default function APropos() {
   return (
@@ -88,8 +87,8 @@ export default function APropos() {
           <h2 style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.028em', marginBottom: 12 }}>Parlez-nous de vos logements.</h2>
           <p className="cta-sub">Ou estimez directement, sans compte.</p>
           <div className="cta-row">
-            <a href={mailto()} className="btn btn-on-dark">Nous contacter</a>
-            <a href={mailto('Demande de démonstration Deltom')} className="btn btn-ghost-dark">Demander une démonstration</a>
+            <a href="/contact" className="btn btn-on-dark">Nous contacter</a>
+            <a href="/contact?objet=demo" className="btn btn-ghost-dark">Demander une démonstration</a>
           </div>
         </div>
       </section>

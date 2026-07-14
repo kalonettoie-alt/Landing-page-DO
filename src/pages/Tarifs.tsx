@@ -2,7 +2,6 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import { usePrices, type PriceItem } from '../lib/prices';
-import { mailto } from '../lib/config';
 
 export default function Tarifs() {
   const prices = usePrices();
@@ -109,7 +108,7 @@ export default function Tarifs() {
           <h2 style={{ fontSize: 34, fontWeight: 700, letterSpacing: '-0.028em', marginBottom: 12 }}>Estimez votre coût en 30 secondes.</h2>
           <p className="cta-sub">Aucun compte requis pour estimer.</p>
           <div className="cta-row">
-            <a href={mailto()} className="btn btn-on-dark">Nous contacter</a>
+            <a href="/contact" className="btn btn-on-dark">Nous contacter</a>
           </div>
         </div>
       </section>
