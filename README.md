@@ -41,9 +41,8 @@ dessus via des rewrites (`vercel.json`) et scrollent à la bonne section :
 - **`public/prices.json`** — source unique des tarifs (ménage, blanchisserie, consommables).
   Éditable sans rebuild : Tarifs **et** l'estimateur de l'accueil le lisent au runtime.
 - **`src/lib/config.ts`** — email de contact, WhatsApp, mentions société, et
-  **`FORMSPREE_OPERATEUR_ENDPOINT`** : ⚠️ endpoint Formspree dédié aux candidatures
-  opérateurs, à remplacer par l'ID réel avant la mise en production (tant qu'il vaut
-  `CHANGEME`, la soumission est simulée).
+  **`FORMSPREE_OPERATEUR_ENDPOINT`** : endpoint Formspree dédié aux candidatures
+  opérateurs (distinct de la boîte « demandes hôtes »).
 - **Balise Google Search Console** : conservée dans `index.html` (`google-site-verification`).
 
 ## Déploiement

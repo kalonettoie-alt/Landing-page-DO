@@ -11,9 +11,8 @@ export const SOCIETE = {
 };
 
 // Endpoint Formspree DÉDIÉ aux candidatures opérateurs.
-// ⚠️ À remplacer par l'ID réel fourni par le client avant la mise en production.
 // (distinct de l'endpoint « demandes hôtes » — on ne mélange pas les deux boîtes)
-export const FORMSPREE_OPERATEUR_ENDPOINT = 'https://formspree.io/f/CHANGEME_OPERATEUR';
+export const FORMSPREE_OPERATEUR_ENDPOINT = 'https://formspree.io/f/mwvgpkna';
 
 export function mailto(subject?: string): string {
   return subject

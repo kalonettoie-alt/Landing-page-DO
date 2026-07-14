@@ -109,12 +109,6 @@ function Candidature() {
       _subject: `👷 Nouvelle candidature opérateur — ${nom}`,
     };
     try {
-      // Endpoint non encore fourni par le client → soumission simulée (Preview).
-      if (FORMSPREE_OPERATEUR_ENDPOINT.includes('CHANGEME')) {
-        console.warn('[Deltom] Endpoint Formspree opérateur non configuré : soumission simulée. Renseigner FORMSPREE_OPERATEUR_ENDPOINT avant la mise en production.');
-        setSubmitted(true);
-        return;
-      }
       const res = await fetch(FORMSPREE_OPERATEUR_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
