@@ -24,17 +24,21 @@ locations courte durée (Airbnb, Booking) et opérateurs de ménage indépendant
 | `/tarifs` | `tarifs.html` | `src/pages/Tarifs.tsx` (charge `public/prices.json`) |
 | `/devenir-operateur` | `devenir-operateur.html` | `src/pages/DevenirOperateur.tsx` (formulaire 3 étapes) |
 | `/a-propos` | `a-propos.html` | `src/pages/APropos.tsx` |
-| `/legal` | `legal.html` | `src/pages/Legal.tsx` |
 
 ### Pages légales
 
 Le juridique est **rapatrié sur le site** (aucun lien vers `legal.deltomops.com`).
-`legal.html` est une page unique (sidebar + 3 sections). Trois URLs propres pointent
-dessus via des rewrites (`vercel.json`) et scrollent à la bonne section :
+Ce sont **trois vraies pages HTML statiques** (aucun React, aucun JS, aucun rewrite) —
+le contenu est présent dans le HTML brut, robuste pour Stripe et les crawlers même
+sans exécution de JavaScript. Fichiers dans `public/`, servis en URLs propres par
+`cleanUrls` (Vercel) :
 
-- `/mentions-legales` → section « Mentions légales »
-- `/cgv` → section « CGU / CGV » (ancres `#facturation`, `#remboursement`)
-- `/confidentialite` → section « Politique de confidentialité »
+- `public/mentions-legales.html` → `/mentions-legales`
+- `public/cgv.html` → `/cgv` (ancres réelles `#facturation`, `#remboursement`)
+- `public/confidentialite.html` → `/confidentialite`
+
+Feuille de style dédiée `public/legal.css` + polices auto-hébergées dans
+`public/fonts/`. Contenu juridique **définitif** (DELTOM GROUPE SAS) — ne pas reformuler.
 
 ## Configuration à connaître
 
@@ -48,8 +52,8 @@ dessus via des rewrites (`vercel.json`) et scrollent à la bonne section :
 ## Déploiement
 
 Vercel. Branche de production : `claude/deltom-operator-landing-dmQ0x` → `www.deltomops.com`.
-Config de build auto-détectée (Vite → `dist/`). `vercel.json` gère `cleanUrls` et les
-rewrites des pages légales.
+Config de build auto-détectée (Vite → `dist/`). `vercel.json` active `cleanUrls`
+(URLs sans `.html`) — aucun rewrite.
 
 ## Développement
 

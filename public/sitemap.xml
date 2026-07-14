@@ -5,5 +5,7 @@
   <url><loc>https://www.deltomops.com/tarifs</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.deltomops.com/devenir-operateur</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.deltomops.com/a-propos</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.deltomops.com/legal</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.deltomops.com/mentions-legales</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.deltomops.com/cgv</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.deltomops.com/confidentialite</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
