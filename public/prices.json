@@ -1,0 +1,48 @@
+{
+  "note": "Tous les prix sont TTC, prix finaux. Barème blanchisserie révisé annuellement par le partenaire — mettre à jour ici uniquement.",
+  "menage": [
+    { "label": "Studio", "prix": "40€" },
+    { "label": "T2", "prix": "50€" },
+    { "label": "T3", "prix": "60€" },
+    { "label": "T4 et plus", "prix": "70€" },
+    { "label": "T5 et grandes surfaces", "prix": "Sur devis" }
+  ],
+  "blanchisserie": {
+    "intro": "Pressing professionnel au prix coûtant, + 1€ de gestion par kit.",
+    "formules": [
+      {
+        "titre": "Vous fournissez vos draps",
+        "sousTitre": "Lavage seul",
+        "items": [
+          { "label": "Parure lit double", "prix": "10,90€" },
+          { "label": "Parure lit simple", "prix": "7,90€" }
+        ]
+      },
+      {
+        "titre": "Deltom fournit le linge",
+        "sousTitre": "Location-entretien, tout compris",
+        "items": [
+          { "label": "Parure lit double", "prix": "13,99€" },
+          { "label": "Parure lit simple", "prix": "9,99€" }
+        ]
+      }
+    ],
+    "serviettes": {
+      "titre": "Serviettes",
+      "sousTitre": "Toujours fournies par Deltom",
+      "items": [
+        { "label": "Grande serviette", "prix": "1,50€" },
+        { "label": "Serviette de toilette", "prix": "1,00€" },
+        { "label": "Tapis de bain", "prix": "1,50€" }
+      ]
+    }
+  },
+  "consommables": [
+    { "label": "Papier toilette", "prix": "2,50€" },
+    { "label": "Savon mains", "prix": "1,80€" },
+    { "label": "Liquide vaisselle", "prix": "3,20€" },
+    { "label": "Dosettes café ×10", "prix": "4,50€" },
+    { "label": "Sacs poubelle", "prix": "2,00€" }
+  ],
+  "operateurs": { "remuneration": "à partir de 26€", "detail": "par intervention selon la taille du logement, payé toutes les deux semaines" }
+}

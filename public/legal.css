@@ -1,0 +1,92 @@
+/* =============================================================================
+   Deltom Operator — pages légales STATIQUES (mentions-legales / cgv / confidentialite)
+   Feuille de style autonome : aucun JS, aucune dépendance de build.
+   Le contenu légal est présent dans le HTML brut → robuste pour Stripe et les
+   crawlers, même sans exécution de JavaScript.
+   ============================================================================= */
+
+/* ---- Polices auto-hébergées (RGPD : aucune requête Google Fonts) ---------- */
+@font-face {
+  font-family: 'Plus Jakarta Sans Variable';
+  font-style: normal; font-display: swap; font-weight: 200 800;
+  src: url('/fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'JetBrains Mono Variable';
+  font-style: normal; font-display: swap; font-weight: 100 800;
+  src: url('/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+:root {
+  --primary: #1A3A3A; --primary-light: #2C4F4F; --gold: #8B7D3C;
+  --ink: #16302F; --body: #5C6B69; --muted: #8A9694;
+  --cream: #F8F6F0; --calm: #F8F7F4; --hair: #F0EFEC; --line: #E3E2DE; --pill: #F5F4F1;
+  --sans: 'Plus Jakarta Sans Variable', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+  --maxw: 1360px; --pad: 64px;
+}
+@media (min-width: 1536px) { :root { --maxw: 1520px; --pad: 72px; } }
+@media (min-width: 1800px) { :root { --maxw: 1640px; --pad: 96px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #fff; font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+a { color: var(--primary); text-decoration: none; }
+a:hover { color: var(--primary-light); }
+
+.wordmark { font-weight: 800; letter-spacing: -0.03em; color: var(--ink); white-space: nowrap; }
+.wordmark .op { font-weight: 500; color: var(--body); }
+.wordmark .dot { color: var(--gold); }
+
+/* ---- Nav ------------------------------------------------------------------ */
+.lnav { height: 76px; border-bottom: 1px solid var(--line); background: var(--calm); position: sticky; top: 0; z-index: 50; }
+.lnav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); height: 76px; display: flex; align-items: center; gap: 4px; }
+.lnav-brand { display: flex; align-items: center; margin-right: 12px; font-size: 21px; }
+.lnav-links { display: flex; align-items: center; gap: 4px; }
+.lnav-links a { font-size: 14.5px; font-weight: 500; color: var(--body); padding: 8px 12px; white-space: nowrap; }
+.lnav-links a:hover { color: var(--ink); }
+.lnav-spacer { flex: 1; }
+.lnav-cta { background: var(--primary); color: #fff; font-size: 15px; font-weight: 600; padding: 12px 18px; border-radius: 12px; white-space: nowrap; }
+.lnav-cta:hover { background: var(--primary-light); color: #fff; }
+
+/* ---- Layout légal --------------------------------------------------------- */
+.legal-layout { max-width: var(--maxw); margin: 0 auto; padding: 72px var(--pad) 0; display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: start; }
+.legal-aside { position: sticky; top: 108px; display: flex; flex-direction: column; gap: 4px; }
+.legal-eyebrow { font-size: 13px; font-weight: 600; color: var(--gold); margin-bottom: 12px; }
+.legal-navlink { font-size: 14.5px; font-weight: 500; color: var(--body); padding: 9px 14px; border-radius: 10px; }
+.legal-navlink:hover { background: var(--pill); color: var(--ink); }
+.legal-navlink.active { background: var(--pill); color: var(--ink); font-weight: 600; }
+.legal-navlink.sub { padding-left: 28px; }
+.legal-main { max-width: 720px; }
+.legal-main h1 { font-size: 38px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 24px; color: var(--ink); }
+.legal-main h2 { font-size: 34px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 24px; color: var(--ink); }
+.legal-prose { display: flex; flex-direction: column; gap: 20px; font-size: 15px; line-height: 1.65; color: var(--body); }
+.legal-prose p { margin: 0; }
+.legal-prose strong { color: var(--ink); }
+.legal-section { scroll-margin-top: 108px; }
+.mono { font-family: var(--mono); font-feature-settings: "tnum" 1; }
+.fact-box { background: var(--cream); border-radius: 16px; padding: 24px 28px; }
+
+/* ---- Footer --------------------------------------------------------------- */
+.footer { border-top: 1px solid var(--hair); margin-top: 96px; }
+.footer-grid { max-width: var(--maxw); margin: 0 auto; padding: 64px var(--pad); display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; }
+.footer .wordmark { font-size: 19px; margin-bottom: 20px; display: inline-block; }
+.footer-legal { font-size: 13px; line-height: 1.65; color: var(--muted); margin: 0; max-width: 340px; }
+.foot-head { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.foot-col-links { display: flex; flex-direction: column; gap: 10px; }
+.foot-link { font-size: 14px; color: var(--body); }
+.foot-link:hover { color: var(--ink); }
+
+@media (max-width: 1024px) { :root { --pad: 40px; } }
+@media (max-width: 900px) {
+  .legal-layout { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; }
+  .legal-aside { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .legal-main h1 { font-size: 32px; }
+  .legal-main h2 { font-size: 27px; }
+}
+@media (max-width: 760px) {
+  :root { --pad: 20px; }
+  .lnav-links { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; row-gap: 40px; }
+  .footer-brand-col { grid-column: 1 / -1; }
+}
