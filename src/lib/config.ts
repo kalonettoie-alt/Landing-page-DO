@@ -1,7 +1,7 @@
 // Constantes partagées du site.
 
 export const CONTACT_EMAIL = 'contact@deltomops.com';
-export const WHATSAPP_URL = 'https://wa.me/33625299321';
+export const WHATSAPP_URL = 'https://wa.me/33759037259';
 export const PHONE_DISPLAY = '+33 7 59 03 72 59';
 export const PHONE_TEL = '+33759037259';
 
