@@ -1,4 +1,4 @@
-# Deltom Operator — site vitrine
+# Deltom — site vitrine
 
 Site vitrine de **DELTOM GROUPE SAS** — plateforme de coordination entre hôtes de
 locations courte durée (Airbnb, Booking) et opérateurs de ménage indépendants, en

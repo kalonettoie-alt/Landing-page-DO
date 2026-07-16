@@ -1,5 +1,5 @@
 import Wordmark from './Wordmark';
-import { CONTACT_EMAIL, SOCIETE, mailto } from '../lib/config';
+import { CONTACT_EMAIL, PHONE_DISPLAY, PHONE_TEL, SOCIETE, mailto } from '../lib/config';
 
 export default function Footer() {
   return (
@@ -40,6 +40,7 @@ export default function Footer() {
           <div className="foot-col-links">
             <a href="/contact" className="foot-link">Nous contacter</a>
             <a href={mailto()} className="foot-link">{CONTACT_EMAIL}</a>
+            <a href={`tel:${PHONE_TEL}`} className="foot-link">{PHONE_DISPLAY}</a>
             <span className="foot-link muted">Ormesson-sur-Marne, Île-de-France</span>
           </div>
         </div>
