@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
-import { CONTACT_EMAIL, FORMSPREE_CONTACT_ENDPOINT, mailto } from '../lib/config';
+import { CONTACT_EMAIL, FORMSPREE_CONTACT_ENDPOINT, PHONE_DISPLAY, PHONE_TEL, mailto } from '../lib/config';
 
 const COUNT_OPTIONS = ['1 bien', '2-5 biens', '6-10 biens', '11-20 biens', '21-50 biens', '50+ biens'];
 
@@ -164,7 +164,9 @@ export default function Contact() {
               {sending ? 'Envoi…' : 'Envoyer ma demande'}
             </button>
             <p className="body" style={{ fontSize: 12.5, textAlign: 'center', color: 'var(--muted)' }}>
-              Ou par WhatsApp / email : <a href={mailto()} style={{ fontWeight: 600 }}>{CONTACT_EMAIL}</a>
+              Par téléphone : <a href={`tel:${PHONE_TEL}`} style={{ fontWeight: 600 }}>{PHONE_DISPLAY}</a>
+              {' · '}email : <a href={mailto()} style={{ fontWeight: 600 }}>{CONTACT_EMAIL}</a>
+              {' · '}ou WhatsApp
             </p>
           </form>
         </div>

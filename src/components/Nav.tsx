@@ -28,7 +28,7 @@ export default function Nav({ active = null, cta = 'contact' }: { active?: PageK
     <>
       <nav className="nav">
         <div className="nav-inner">
-          <a href="/" style={{ display: 'flex', alignItems: 'center', marginRight: 28 }} aria-label="Accueil Deltom Operator">
+          <a href="/" style={{ display: 'flex', alignItems: 'center', marginRight: 28 }} aria-label="Accueil Deltom">
             <Wordmark />
           </a>
           <div className="nav-links-desktop">
