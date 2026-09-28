@@ -90,3 +90,14 @@ a:hover { color: var(--primary-light); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; row-gap: 40px; }
   .footer-brand-col { grid-column: 1 / -1; }
 }
+
+/* ---- Mobile : zones tactiles ≥ 44 px, pas de débordement à 320 px ------- */
+@media (max-width: 760px), (pointer: coarse) {
+  .lnav-brand { min-height: 44px; }
+  .lnav-cta { display: inline-flex; align-items: center; min-height: 44px; }
+  .legal-navlink { display: flex; align-items: center; min-height: 44px; }
+  .foot-link { display: flex; align-items: center; min-height: 44px; }
+}
+@media (max-width: 420px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}

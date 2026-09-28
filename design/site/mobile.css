@@ -1,0 +1,31 @@
+/* mobile.css — zones tactiles d'au moins 44 px sur téléphone et écran tactile
+   (directive du handoff : « Zones tactiles ≥ 44px »). Chargée après les styles
+   du design : n'agrandit que la surface cliquable, sans changer textes ni couleurs.
+   Sans effet sur ordinateur à la souris. */
+@media (max-width: 760px), (pointer: coarse) {
+  /* Liens seuls sur leur ligne (sommaires, fils d'Ariane, encarts, « Voir… → ») */
+  .toc ol li a, .dx a { display: flex; align-items: center; min-height: 44px; }
+  .crumb a, .bc a, a.tl, .ec-go, .tx2 > p > a, .pr-l > a, .risk > p > a {
+    display: inline-flex; align-items: center; min-height: 44px;
+  }
+  ul.lk > li > a, .mz-l a { min-height: 44px; }
+  .src li a { display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* Formulaires : newsletters, champs d'inscription, sélecteurs */
+  .pf .nl input, .pf .nl button, .nlf input, .nlf button, .su input, .su button { min-height: 44px; }
+  .seg4 button { min-height: 44px; }
+  .faq2 summary { padding-top: 10px; padding-bottom: 10px; }
+
+  /* Curseurs : zone tactile de 44 px, piste et mise en page inchangées */
+  input[type=range] { height: 44px; margin-top: -14px; margin-bottom: -14px; }
+  .sim input[type=range], .sm input[type=range] {
+    height: 10px; box-sizing: content-box;
+    border: 17px solid transparent; border-left: 0; border-right: 0;
+    background-clip: content-box; margin: -17px 0;
+  }
+  .ob-f input[type=range] { height: 44px; margin: -8px 0; }
+
+  /* Club : logo et champ du programme (16 px évite le zoom automatique d'iOS) */
+  .nv .lg { display: inline-flex; align-items: center; min-height: 44px; }
+  .fm2 input { font-size: 16px; }
+}

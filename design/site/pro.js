@@ -36,7 +36,7 @@
 .px{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(14px);transition:box-shadow .2s}
 .px.sc{box-shadow:0 1px 0 #ECE8E0}
 .px-nav>.px-it>a,.px-nav>.px-it>button,.px-nav>a{white-space:nowrap}
-.px .in{width:100%;box-sizing:border-box;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;gap:20px;height:76px}
+.px .in{width:100%;box-sizing:border-box;max-width:1400px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;gap:20px;height:76px}
 .px .mark{color:#1A3A3A;display:inline-flex;align-items:center;gap:6px;flex-shrink:0;line-height:1}.px .mark svg{width:36px;height:36px;flex-shrink:0;display:block}.px .mark span{display:block;line-height:1}
 .px-nav{display:flex;gap:0;margin-left:10px;min-width:0}
 .px-it{position:relative}
@@ -62,8 +62,8 @@
 .px-p{background:#1A3A3A;color:#fff}.px-p:hover{background:#24504E}
 .px-bg{display:none;width:44px;height:44px;border:0;border-radius:99px;background:#F5F3EE;cursor:pointer;align-items:center;justify-content:center}
 .px-mob{display:none}
-@media (max-width:1320px){.px-it>a,.px-it>button{padding:0 10px;font-size:14.5px}.px .in{gap:14px}.px-r .b{padding:0 16px;font-size:14.5px}.px-r .px-l{background:none;padding:0 10px}}
-@media (max-width:1180px){.px-nav{display:none}.px-bg{display:flex}
+@media (max-width:1365px){.px-it>a,.px-it>button{padding:0 10px;font-size:14.5px}.px .in{gap:14px}.px-r .b{padding:0 16px;font-size:14.5px}.px-r .px-l{background:none;padding:0 10px}}
+@media (max-width:1250px){.px-nav{display:none}.px-bg{display:flex}
 .px-mob.on{display:block;max-height:calc(100vh - 76px);overflow:auto;border-top:1px solid #ECE8E0;background:#fff;padding:8px clamp(20px,4vw,48px) 28px}
 .px-mob h5{margin:20px 0 6px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8B7D3C}
 .px-mob a{display:block;padding:11px 0;font-size:16.5px;font-weight:600;color:#172524;border-bottom:1px solid #F1EEE7}
@@ -89,11 +89,8 @@
 .px-cl:hover{color:#172524}
 .px-cl::after{content:"";position:absolute;right:0;top:50%;width:1px;height:20px;margin-top:-10px;background:#E4E0D8}
 .px-mob .px-mcl{margin-top:14px;padding-top:16px;border-top:1px solid #DCD7CC;color:#6A7472}
-@media (max-width:1320px){.px-cl{font-size:14.5px;padding:0 12px 0 6px;margin-right:4px}}
-@media (max-width:1180px){.px-cl{display:none}}
-/* Place pour « Devenir agent de ménage » : espacements resserrés (polices et couleurs inchangées). */
-@media (min-width:1321px){.px .in{gap:12px}.px-nav{margin-left:4px}.px-it>a,.px-it>button{padding:0 9px}.px-r .b{padding:0 16px}.px-cl{padding:0 12px 0 4px;margin-right:2px}}
-@media (max-width:1240px){.px .in{gap:10px}.px-nav{margin-left:4px}.px-it>a,.px-it>button{padding:0 8px}.px-cl{padding:0 10px 0 2px;margin-right:0}}`;
+@media (max-width:1365px){.px-cl{font-size:14.5px;padding:0 12px 0 6px;margin-right:4px}}
+@media (max-width:1250px){.px-cl{display:none}}`;
   document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
   const chev = '<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const hd = document.getElementById('hd');

@@ -112,6 +112,8 @@ for (const f of pages) {
     document.querySelectorAll('.mark').forEach(m => { if (!m.querySelector('svg')) m.innerHTML = logo() + '<span>' + m.innerHTML + '</span>'; });
   }
   head.insertAdjacentHTML('beforeend', NOSCRIPT);
+  // Zones tactiles ≥ 44 px sur mobile (chargée en dernier, voir design/site/mobile.css).
+  head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="/assets/mobile.css" />');
 
   // Aperçus en iframe.
   document.querySelectorAll('iframe[src]').forEach(fr => {
@@ -180,11 +182,20 @@ const exists = p => {
 };
 const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
 let links = 0;
-for (const file of walk(OUT).filter(x => x.endsWith('.html'))) {
-  for (const [, v] of read(file).matchAll(/(?:href|src|action)="(\/[^"]*)"/g)) {
+const idsOf = f => new Set([...read(f).matchAll(/\bid="([^"]+)"/g)].map(m => m[1]));
+for (const file of walk(OUT).filter(x => x.endsWith('.html') && !x.includes(`${path.sep}demo${path.sep}`))) {
+  const html = read(file), ids = idsOf(file), rel = path.relative(OUT, file);
+  for (const [, v] of html.matchAll(/(?:href|src|action)="(\/[^"]*)"/g)) {
     links++;
-    if (!exists(v)) warn.push(`${path.relative(OUT, file)} → lien interne cassé : ${v}`);
+    if (!exists(v)) { warn.push(`${rel} → lien interne cassé : ${v}`); continue; }
+    const [p, anchor] = v.split('#');
+    if (anchor) {
+      const clean = p.split('?')[0].replace(/\/$/, '') || '/';
+      const target = clean === '/' ? path.join(OUT, 'index.html') : path.join(OUT, clean.slice(1) + '.html');
+      if (fs.existsSync(target) && !idsOf(target).has(anchor)) warn.push(`${rel} → ancre inexistante : ${v}`);
+    }
   }
+  for (const [, a] of html.matchAll(/href="#([^"]+)"/g)) if (!ids.has(a)) warn.push(`${rel} → ancre inexistante : #${a}`);
 }
 
 console.log(`✓ ${pages.length} pages, ${sitemap.length} URL dans le sitemap, ${links} liens internes vérifiés`);
