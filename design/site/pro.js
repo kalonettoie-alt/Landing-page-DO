@@ -19,7 +19,6 @@
       ['espace-client.html', 'Espace client', 'Suivi en direct, rapports, factures'],
     ], ['Nos services', 'Pensé par des hôtes, fait par des mains d’experts.']],
     ['Tarifs', 'tarifs.html'],
-    ['Devenir prestataire', 'club-operateurs.html'],
     ['Ressources', [
       ['comment-ca-marche.html', 'Comment ça marche', 'De l’inscription au premier rapport'],
       ['guides.html', 'Guides pour hôtes', 'Conseils pour la location courte durée'],
@@ -28,7 +27,6 @@
     ], ['Ressources', 'Tout pour bien louer en courte durée.']],
     ['Entreprise', [
       ['a-propos.html', 'À propos', 'Notre histoire et nos engagements'],
-      ['devenir-operateur.html', 'Devenir opérateur', 'Missions près de chez vous'],
       ['contact.html', 'Contact', 'Une question, un devis, un partenariat'],
     ], ['Deltom', 'Une équipe d’hôtes et d’experts de l’hôtellerie.']],
   ];
@@ -86,7 +84,16 @@
 .pf .bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.45)}
 .pf .bot span a{display:inline-block;white-space:nowrap;margin-left:18px;color:rgba(255,255,255,.45)}
 .pf .bot span:first-child{white-space:nowrap}
-@media (max-width:980px){.pf .top{grid-template-columns:1fr 1fr}.pf .top>div:first-child{grid-column:1/-1}}`;
+@media (max-width:980px){.pf .top{grid-template-columns:1fr 1fr}.pf .top>div:first-child{grid-column:1/-1}}
+.px-cl{position:relative;display:flex;align-items:center;height:42px;padding:0 16px 0 10px;margin-right:6px;font-size:15px;font-weight:600;color:#6A7472;white-space:nowrap}
+.px-cl:hover{color:#172524}
+.px-cl::after{content:"";position:absolute;right:0;top:50%;width:1px;height:20px;margin-top:-10px;background:#E4E0D8}
+.px-mob .px-mcl{margin-top:14px;padding-top:16px;border-top:1px solid #DCD7CC;color:#6A7472}
+@media (max-width:1320px){.px-cl{font-size:14.5px;padding:0 12px 0 6px;margin-right:4px}}
+@media (max-width:1180px){.px-cl{display:none}}
+/* Place pour « Devenir agent de ménage » : espacements resserrés (polices et couleurs inchangées). */
+@media (min-width:1321px){.px .in{gap:12px}.px-nav{margin-left:4px}.px-it>a,.px-it>button{padding:0 9px}.px-r .b{padding:0 16px}.px-cl{padding:0 12px 0 4px;margin-right:2px}}
+@media (max-width:1240px){.px .in{gap:10px}.px-nav{margin-left:4px}.px-it>a,.px-it>button{padding:0 8px}.px-cl{padding:0 10px 0 2px;margin-right:0}}`;
   document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
   const chev = '<svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const hd = document.getElementById('hd');
@@ -96,8 +103,8 @@
       <nav class="px-nav">${NAV.map(([l, v, lb]) => typeof v === 'string'
         ? `<div class="px-it${v === here ? ' on' : ''}"><a href="${v}">${l}</a></div>`
         : `<div class="px-it${v.some(x => x[0] === here) ? ' on' : ''}"><button type="button" aria-expanded="false" aria-haspopup="true">${l}${chev}</button><div class="px-mg"><div class="lb"><b>${lb[0]}</b><span>${lb[1]}</span></div><div class="lk">${v.map(([h, t, s]) => `<a href="${h}" class="${h === here ? 'cur' : ''}"><b>${t}</b><span>${s}</span></a>`).join('')}</div></div></div>`).join('')}</nav>
-      <div class="px-r"><a class="b px-l" href="${APP}">Se connecter</a><a class="b px-p" href="${APP}">Créer mon compte</a><button class="px-bg" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="px-mob"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 5h14M2 13h14" stroke="#172524" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
-      <div class="px-mob" id="px-mob">${NAV.map(([l, v]) => typeof v === 'string' ? `<a href="${v}">${l}</a>` : `<h5>${l}</h5>${v.map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}`).join('')}<a href="${APP}">Se connecter</a><a class="b px-p" href="${APP}">Créer mon compte</a></div>`;
+      <div class="px-r"><a class="px-cl" href="club-operateurs.html">Devenir agent de ménage</a><a class="b px-l" href="${APP}">Se connecter</a><a class="b px-p" href="${APP}">Créer mon compte</a><button class="px-bg" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="px-mob"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 5h14M2 13h14" stroke="#172524" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+      <div class="px-mob" id="px-mob">${NAV.map(([l, v]) => typeof v === 'string' ? `<a href="${v}">${l}</a>` : `<h5>${l}</h5>${v.map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}`).join('')}<a class="px-mcl" href="club-operateurs.html">Devenir agent de ménage</a><a href="${APP}">Se connecter</a><a class="b px-p" href="${APP}">Créer mon compte</a></div>`;
     const its = hd.querySelectorAll('.px-it');
     let t;
     its.forEach(it => {
@@ -122,7 +129,7 @@
     ft.innerHTML = `<div class="in"><div class="top">
       <div><a class="mark" href="Accueil.html">${LOGO}<span>deltom<i>.</i></span></a><p class="mt">Pensé par des hôtes, fait par des mains d'experts. Ménage supervisé et linge hôtelier pour la location courte durée en Île-de-France.</p>
       <form class="nl" onsubmit="event.preventDefault();this.innerHTML='<span style=&quot;padding:10px 14px;color:#fff&quot;>Merci, à très vite.</span>'"><input type="email" required placeholder="Votre e-mail" aria-label="E-mail" /><button>S'abonner</button></form></div>
-      ${col('Solutions')}${col('Services')}${col('Ressources')}<div><h4>Prestataires</h4><a href="club-operateurs.html">Le Club des opérateurs</a><a href="devenir-operateur.html">Missions près de chez vous</a><a href="guide-creer-micro-entreprise-menage.html">Créer sa micro-entreprise</a></div><div><h4>Entreprise</h4>${M('Entreprise')[1].map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}<a href="tarifs.html">Tarifs</a><a href="${APP}">Espace client</a></div>
+      ${col('Solutions')}${col('Services')}${col('Ressources')}<div><h4>Agents de ménage</h4><a href="club-operateurs.html">Devenir agent de ménage</a><a href="devenir-operateur.html">Missions près de chez vous</a><a href="guide-creer-micro-entreprise-menage.html">Créer sa micro-entreprise</a></div><div><h4>Entreprise</h4>${M('Entreprise')[1].map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}<a href="tarifs.html">Tarifs</a><a href="${APP}">Espace client</a></div>
     </div><div class="bot"><span>© 2026 DELTOM GROUPE SAS · 57 rue du Centre, 94490 Ormesson-sur-Marne · <a href="mailto:contact@deltomops.com">contact@deltomops.com</a></span><p class="ml">Deltom ne réalise pas les prestations : elle organise, coordonne et facture pour le compte des opérateurs (mandat de facturation).</p><span><a href="../site-actuel/mentions-legales.html">Mentions légales</a><a href="../site-actuel/cgv.html">CGV</a><a href="../site-actuel/confidentialite.html">Confidentialité</a></span></div></div>`;
   }
   let lgN = 0; document.querySelectorAll('.mark').forEach(m => { if (!m.querySelector('svg')) { const id = 'plm' + (lgN++); m.innerHTML = LOGO.replace('id="plm"', 'id="' + id + '"').replace('url(#plm)', 'url(#' + id + ')') + '<span>' + m.innerHTML + '</span>'; } });
