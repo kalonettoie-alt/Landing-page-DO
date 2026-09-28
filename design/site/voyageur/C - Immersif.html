@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lien voyageur · C · Immersif</title>
+<style>
+@font-face{font-family:'Jakarta';font-style:normal;font-display:swap;font-weight:200 800;src:url('../fonts/plus-jakarta-sans-latin-wght-normal.woff2') format('woff2-variations')}
+:root{--bg:#121614;--card:#1C221F;--card2:#252C28;--ink:#F4EEE4;--soft:#B9B2A6;--mute:#80796F;--amber:#E8A45B;--ok:#7FC79A}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{font-family:'Jakarta',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+a{color:var(--amber);text-decoration:none}a:hover{color:var(--ink)}button{font:inherit;cursor:pointer;color:inherit}
+.app{max-width:430px;margin:0 auto;min-height:100%;position:relative;display:flex;flex-direction:column}
+.ph{position:relative;height:56vh;min-height:380px;max-height:520px;background:#2A2F2B}
+.sky{position:absolute;inset:0;overflow:hidden;background:var(--s0);transition:background 1.4s ease}
+.sky i{position:absolute;border-radius:50%;filter:blur(46px);opacity:.9;transition:background 1.4s ease}
+.b1{width:80%;height:60%;left:-20%;top:-10%;background:var(--s1);animation:dr1 14s ease-in-out infinite alternate}
+.b2{width:70%;height:55%;right:-25%;top:20%;background:var(--s2);animation:dr2 18s ease-in-out infinite alternate}
+.b3{width:90%;height:50%;left:5%;bottom:-15%;background:var(--s3);animation:dr3 16s ease-in-out infinite alternate}
+@keyframes dr1{to{transform:translate(18%,12%) scale(1.15)}}@keyframes dr2{to{transform:translate(-22%,-8%) scale(.9)}}@keyframes dr3{to{transform:translate(-10%,-14%) scale(1.1)}}
+.orb{position:absolute;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,var(--o) 0 40%,transparent 72%);left:var(--ox);top:var(--oy);transform:translate(-50%,-50%);transition:left 1.6s cubic-bezier(.4,0,.2,1),top 1.6s cubic-bezier(.4,0,.2,1),background 1.4s;animation:gl 4s ease-in-out infinite}
+@keyframes gl{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
+.pt em{position:absolute;bottom:-6px;width:3px;height:3px;border-radius:3px;background:var(--p);opacity:0;animation-name:rise;animation-timing-function:linear;animation-iteration-count:infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-360px) translateX(12px);opacity:0}}
+.ph[data-m="avant"]{--s0:#2A1D16;--s1:#E8A45B;--s2:#B4532A;--s3:#5A3A2A;--o:#FFD9A0;--ox:18%;--oy:62%;--p:#FFE2B8}
+.ph[data-m="pendant"]{--s0:#12241F;--s1:#2F6B5A;--s2:#7FC79A;--s3:#1E3A4A;--o:#FFF6DA;--ox:72%;--oy:18%;--p:rgba(255,255,255,.6)}
+.ph[data-m="depart"]{--s0:#231A26;--s1:#C9826B;--s2:#6B4A7A;--s3:#E8A45B;--o:#FFB88A;--ox:84%;--oy:58%;--p:#FFD0B0}
+@media (prefers-reduced-motion:reduce){.sky i,.orb,.pt em{animation:none}}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,22,20,.55) 0%,rgba(18,22,20,0) 28%,rgba(18,22,20,0) 45%,var(--bg) 100%);pointer-events:none}
+.top{position:absolute;left:0;right:0;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:14px 18px}
+.mk{display:flex;align-items:center;gap:6px;font-weight:800;font-size:17px;letter-spacing:-.04em}
+.lang{display:flex;gap:2px;padding:3px;border-radius:99px;background:rgba(0,0,0,.35);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.lang button{border:0;background:none;padding:4px 9px;border-radius:99px;font-size:11.5px;font-weight:700;color:rgba(255,255,255,.7)}.lang button.on{background:var(--ink);color:var(--bg)}
+.hd{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:0 20px 8px}
+.st{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px;border-radius:99px;background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:12.5px;font-weight:700}
+.st i{width:8px;height:8px;border-radius:8px;background:var(--ok)}.st.wait i{background:var(--amber);animation:pl 1.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(232,164,91,.6)}100%{box-shadow:0 0 0 8px rgba(232,164,91,0)}}
+.hd h1{margin:12px 0 0;font-size:36px;line-height:1.02;letter-spacing:-.045em;font-weight:780;text-wrap:balance}
+.hd p{margin:8px 0 0;font-size:14.5px;color:var(--soft);text-wrap:pretty}
+.meta{padding:10px 20px 0;display:flex;gap:8px;flex-wrap:wrap}.meta span{font-size:12.5px;font-weight:600;color:var(--soft);padding:6px 11px;border-radius:99px;background:var(--card)}
+.rail{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 20px 8px;scrollbar-width:none}.rail::-webkit-scrollbar{display:none}
+.cd{scroll-snap-align:start;flex:0 0 72%;border:0;text-align:left;border-radius:24px;background:var(--card);padding:18px;min-height:150px;display:flex;flex-direction:column}
+.cd small{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.cd strong{display:block;margin-top:8px;font-size:19px;letter-spacing:-.025em;line-height:1.15}
+.cd span{display:block;margin-top:4px;font-size:13px;color:var(--soft)}
+.cd .go{margin-top:auto;padding-top:14px;font-size:13px;font-weight:700;color:var(--amber)}
+.cd.hl{background:var(--amber);color:#1a140c}.cd.hl small,.cd.hl span{color:rgba(26,20,12,.7)}.cd.hl .go{color:#1a140c}
+.cd .code{font-size:26px;font-weight:800;letter-spacing:.16em;margin-top:8px;font-variant-numeric:tabular-nums}
+.dots{display:flex;justify-content:center;gap:5px;padding:4px 0 0}.dots i{width:5px;height:5px;border-radius:5px;background:var(--card2)}
+.foot{margin-top:auto;padding:20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.foot .by{font-size:11.5px;color:var(--mute);display:flex;align-items:center;gap:5px}.foot .by b{color:var(--ink);font-weight:800;letter-spacing:-.04em}
+.foot a{height:40px;display:inline-flex;align-items:center;padding:0 16px;border-radius:99px;background:var(--card2);color:var(--ink);font-weight:650;font-size:13.5px}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:50%;bottom:0;width:100%;max-width:430px;transform:translate(-50%,105%);transition:transform .35s cubic-bezier(.2,.8,.2,1);z-index:21;background:var(--card);border-radius:28px 28px 0 0;padding:10px 20px 26px;max-height:82vh;overflow:auto}
+.sheet.on{transform:translate(-50%,0)}.sheet .gr{width:40px;height:4px;border-radius:4px;background:var(--card2);margin:0 auto 14px}
+.sheet h2{margin:0;font-size:26px;letter-spacing:-.04em}.sheet>p{margin:6px 0 0;color:var(--soft);font-size:14px}
+.rows{margin-top:14px;display:grid;gap:8px}
+.r{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:16px;background:var(--card2)}
+.r div{flex:1;min-width:0}.r b{display:block;font-size:14.5px}.r span{display:block;font-size:12.5px;color:var(--soft)}
+.r .v{font-size:20px;font-weight:800;letter-spacing:.12em;font-variant-numeric:tabular-nums}
+.r .n{width:24px;height:24px;border-radius:99px;background:var(--amber);color:#1a140c;display:grid;place-items:center;font-size:12px;font-weight:800;flex-shrink:0}
+.cpb{height:34px;padding:0 13px;border-radius:99px;border:0;background:var(--ink);color:var(--bg);font-size:12.5px;font-weight:700}.cpb.ok{background:var(--ok)}
+.bk{height:38px;padding:0 15px;border-radius:99px;border:0;background:var(--amber);color:#1a140c;font-size:13.5px;font-weight:700;white-space:nowrap}.bk.on{background:var(--ok)}
+.r.ck{cursor:pointer}.r.ck i{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--mute);display:grid;place-items:center;font-style:normal;font-size:12px;color:var(--bg);flex-shrink:0}.r.ck.on i{background:var(--ok);border-color:var(--ok)}.r.ck.on b{color:var(--mute);text-decoration:line-through}
+.tl{margin-top:14px;display:flex;gap:6px}.tl i{flex:1;height:4px;border-radius:4px;background:var(--card2)}.tl i.on{background:var(--ok)}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="ph" id="ph"><div class="sky"><i class="b1"></i><i class="b2"></i><i class="b3"></i><span class="orb"></span><div class="pt"><em style="left:0%;animation-delay:0s;animation-duration:6s"></em><em style="left:37%;animation-delay:0.7s;animation-duration:7s"></em><em style="left:74%;animation-delay:1.4s;animation-duration:8s"></em><em style="left:11%;animation-delay:2.0999999999999996s;animation-duration:9s"></em><em style="left:48%;animation-delay:2.8s;animation-duration:10s"></em><em style="left:85%;animation-delay:3.5s;animation-duration:6s"></em><em style="left:22%;animation-delay:4.199999999999999s;animation-duration:7s"></em><em style="left:59%;animation-delay:4.8999999999999995s;animation-duration:8s"></em><em style="left:96%;animation-delay:5.6s;animation-duration:9s"></em><em style="left:33%;animation-delay:0.2999999999999998s;animation-duration:10s"></em><em style="left:70%;animation-delay:1s;animation-duration:6s"></em><em style="left:7%;animation-delay:1.6999999999999993s;animation-duration:7s"></em><em style="left:44%;animation-delay:2.3999999999999986s;animation-duration:8s"></em><em style="left:81%;animation-delay:3.0999999999999996s;animation-duration:9s"></em></div></div><div class="top"><span class="mk" id="mk"></span><div class="lang" id="lang"></div></div><div class="hd" id="hd"></div></div>
+<div class="meta" id="meta"></div>
+<div class="rail" id="rail"></div>
+<div class="foot"><span class="by" id="by"></span><a href="#" id="ct"></a></div>
+</div>
+<div class="scrim" id="scrim"></div><div class="sheet" id="sheet"></div>
+<script src="lv-data.js"></script>
+<script src="../image-slot.js"></script>
+<script>
+const {t,UPS,CODES,LANGS,setLang,getLang,copy,logo}=LV;
+let moment=new URLSearchParams(location.search).get('m')||'avant';const booked=new Set(),done=new Set();let open=null;
+const cp=(v)=>`<button class="cpb" data-cp="${v}">${t('copy')}</button>`;
+const S={
+ access:()=>`<h2>${t('access')}</h2><p>${t('address')}</p><div class="rows"><div class="r"><span class="n">1</span><div><b>${t('a1')}</b></div></div><div class="r"><span class="n">2</span><div><b>${t('a2')}</b></div></div><div class="r"><span class="n">3</span><div><b>${t('a3')}</b></div></div><div class="r"><div><span>${t('door')}</span><span class="v">${CODES.door}</span></div>${cp(CODES.door)}</div><div class="r"><div><span>${t('keybox')}</span><span class="v">${CODES.keybox}</span></div>${cp(CODES.keybox)}</div></div>`,
+ wifi:()=>`<h2>${t('wifi')}</h2><p>${CODES.ssid}</p><div class="rows"><div class="r"><div><span>${t('wifi')}</span><b style="font-size:18px">${CODES.wifi}</b></div>${cp(CODES.wifi)}</div></div>`,
+ offer:()=>`<h2>${t('offer')}</h2><div class="rows">${UPS[moment].map(([k,p])=>{const on=booked.has(k);return `<div class="r"><div><b>${t(k)} · ${p}</b><span>${t(k+'_s')}</span></div><button class="bk${on?' on':''}" data-bk="${k}">${on?t('booked')+' ✓':t('book')}</button></div>`}).join('')}</div>`,
+ guide:()=>`<h2>${t('guide')}</h2><div class="rows">${['g1','g2','g3'].map(k=>`<div class="r"><div><b>${t(k)}</b><span>${t(k+'s')}</span></div><a href="#">${t('maps')}</a></div>`).join('')}</div><p style="margin-top:18px;font-weight:700;color:var(--ink)">${t('rules')}</p><div class="rows">${['r1','r2','r3'].map(k=>`<div class="r"><div><b>${t(k)}</b></div></div>`).join('')}</div>`,
+ check:()=>`<h2>${t('check')}</h2><p>${t('out_s')}</p><div class="rows">${['c1','c2','c3','c4'].map(k=>`<div class="r ck${done.has(k)?' on':''}" data-ck="${k}"><i>✓</i><div><b>${t(k)}</b></div></div>`).join('')}</div>`,
+ review:()=>`<h2>${t('review')}</h2><p>${t('review_s')}</p><div class="rows"><a class="bk" style="display:inline-flex;align-items:center;justify-content:center" href="#">${t('review_b')}</a></div>`};
+function hd(){if(moment==='avant')return `<span class="st wait"><i></i>${t('eta')}</span><h1>${t('prep_t')}</h1><p>${t('prep_s')}</p><div class="tl"><i class="on"></i><i class="on"></i><i></i></div>`;
+if(moment==='pendant')return `<span class="st"><i></i>${t('ready_t')}</span><h1>${t('during_t')}</h1><p>${t('at')}</p>`;
+return `<span class="st"><i></i>${t('m_depart')}</span><h1>${t('out_today')}</h1><p>${t('out_s')}</p>`}
+function cards(){const up=UPS[moment][0];const c=[];
+const offerCard=`<button class="cd hl" data-s="offer"><small>${t('offer')}</small><strong>${t(up[0])}</strong><span>${t(up[0]+'_s')} · ${up[1]}</span><span class="go">${booked.has(up[0])?t('booked')+' ✓':t('book')+' →'}</span></button>`;
+const acc=`<button class="cd" data-s="access"><small>${t('tab_access')}</small><strong>${t('in_t')}</strong><span>${t('address')}</span><span class="go">${t('access')} →</span></button>`;
+const wifi=`<button class="cd" data-s="wifi"><small>${t('wifi')}</small><div class="code" style="font-size:18px;letter-spacing:.04em">${CODES.wifi}</div><span>${CODES.ssid}</span><span class="go">${t('copy')} →</span></button>`;
+const door=`<button class="cd" data-s="access"><small>${t('door')}</small><div class="code">${CODES.door}</div><span>${t('keybox')} · ${CODES.keybox}</span><span class="go">${t('access')} →</span></button>`;
+const guide=`<button class="cd" data-s="guide"><small>${t('tab_guide')}</small><strong>${t('guide')}</strong><span>${t('g1')} · ${t('g2')} · ${t('g3')}</span><span class="go">→</span></button>`;
+const check=`<button class="cd" data-s="check"><small>${t('m_depart')}</small><strong>${t('check')}</strong><span>${done.size}/4</span><span class="go">→</span></button>`;
+const rev=`<button class="cd" data-s="review"><small>★</small><strong>${t('review')}</strong><span class="go">${t('review_b')} →</span></button>`;
+if(moment==='avant')return [acc,offerCard,guide].join('');
+if(moment==='pendant')return [door,offerCard,wifi,guide].join('');
+return [check,offerCard,rev].join('')}
+function render(){document.documentElement.lang=getLang();document.getElementById('ph').dataset.m=moment;mk.innerHTML=logo('#F4EEE4','#E8A45B',20)+'deltom';
+lang.innerHTML=LANGS.map(([c,l])=>`<button class="${c===getLang()?'on':''}" data-l="${c}">${l}</button>`).join('');
+hd_el.innerHTML=hd();meta.innerHTML=`<span>${t('hello')}</span><span>${t('dates')}</span><span>${t('guests')}</span>`;rail.innerHTML=cards();
+by.innerHTML=`${t('by')} ${logo('#F4EEE4','#E8A45B',13)}<b>deltom</b>`;ct.textContent=t('contact');
+if(open)sheet.innerHTML='<div class="gr"></div>'+S[open]()}
+const hd_el=document.getElementById('hd');
+const openS=k=>{open=k;sheet.innerHTML='<div class="gr"></div>'+S[k]();sheet.classList.add('on');scrim.classList.add('on')};
+const closeS=()=>{open=null;sheet.classList.remove('on');scrim.classList.remove('on')};
+scrim.onclick=closeS;
+document.addEventListener('click',e=>{const b=e.target.closest('[data-l],[data-s],[data-bk],[data-cp],[data-ck],.gr');if(!b)return;
+if(b.classList.contains('gr'))closeS();else if(b.dataset.l){setLang(b.dataset.l);render()}else if(b.dataset.s)openS(b.dataset.s);else if(b.dataset.bk){const k=b.dataset.bk;booked.has(k)?booked.delete(k):booked.add(k);render()}else if(b.dataset.ck){const k=b.dataset.ck;done.has(k)?done.delete(k):done.add(k);render()}else if(b.dataset.cp)copy(b,b.dataset.cp)});
+addEventListener('message',e=>{if(e.data&&e.data.lvMoment){moment=e.data.lvMoment;closeS();render()}if(e.data&&e.data.lvLang){setLang(e.data.lvLang);render()}});
+render();
+(()=>{const q=new URLSearchParams(location.search);if(q.get('s'))setTimeout(()=>openS(q.get('s')),600);if(q.get('auto')){const O=['avant','pendant','depart'];setInterval(()=>{moment=O[(O.indexOf(moment)+1)%3];closeS();render()},5000)}})();
+</script>
+</body>
+</html>

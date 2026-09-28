@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deltom — Onboarding client</title>
+<link rel="stylesheet" href="ob.css" />
+<style>html,body{margin:0;padding:0;background:#fff}
+.done-bub{position:fixed;z-index:120;right:24px;bottom:24px;width:min(340px,calc(100vw - 32px));background:#fff;border:1px solid rgba(31,26,20,.1);border-radius:16px;box-shadow:0 18px 44px rgba(31,26,20,.22);padding:18px 18px 16px}
+.done-bub .k{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#8C8340}
+.done-bub h3{margin:6px 0 4px;font-size:18px;font-weight:700;letter-spacing:-.025em;color:#1f1a14}
+.done-bub p{margin:0 0 14px;font-size:13px;line-height:1.5;color:#5c5751}
+.done-bub .row{display:flex;gap:8px}
+.done-bub .row>*{flex:1}
+.done-bub .x{position:absolute;top:10px;right:10px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:0;border-radius:999px;background:transparent;color:#8c8c88;cursor:pointer;font-size:15px}
+.su-ov{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:28px 20px;background:rgba(31,26,20,.45)}
+.su-ov .oa{position:relative;inset:auto;width:min(560px,100%);max-height:100%;height:auto;border-radius:18px;box-shadow:0 26px 68px rgba(31,26,20,.3);overflow:hidden}
+.su-ov .oa-top{padding:14px 18px}
+.su-ov .oa-body{overflow:auto}
+.su-ov .oa-col{padding:22px 26px 26px;max-width:none}
+.su-ov .oa-col h1{font-size:24px}
+.su-ov .su-mode{display:none}
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="dc-data.jsx"></script>
+  <script type="text/babel" src="ob-add.jsx"></script>
+  <script type="text/babel" src="ob-demande.jsx"></script>
+  <script type="text/babel" src="ob-facture.jsx"></script>
+  <script type="text/babel" src="ob-suivi.jsx"></script>
+  <script type="text/babel" src="ob-app.jsx"></script>
+  <script type="text/babel" src="ob-signup.jsx"></script>
+  <script type="text/babel">
+    const CONSOLE_URL = '../client-web/Console%20client%20-%20barre%20en%20haut.html';
+    const SITE_URL = '../site-actuel/index.html';
+    function DoneBubble({ data, onClose, onAddLogement }) {
+      const d = data || {};
+      return (
+        <div className="done-bub">
+          <button className="x" onClick={onClose} aria-label="Fermer">×</button>
+          <div className="k">Compte ouvert</div>
+          <h3>Bienvenue, {d.prenom || 'Camille'}</h3>
+          <p>Votre compte est actif. Il ne reste qu'à déclarer vos logements.</p>
+          <div className="row">
+            <button className="ob-btn sm" onClick={onClose}>Plus tard</button>
+            <button className="ob-btn" onClick={onAddLogement}>Déclarer</button>
+          </div>
+        </div>
+      );
+    }
+    function Demo() {
+      const [done, setDone] = React.useState(null);
+      const [bub, setBub] = React.useState(true);
+      const toConsole = () => { window.location.href = CONSOLE_URL; };
+      return done
+        ? <><ObApp />{bub && <DoneBubble data={done} onClose={() => setBub(false)} onAddLogement={toConsole} />}</>
+        : <><ObApp /><div className="su-ov ob"><ObSignup onDone={setDone} onClose={() => { window.location.href = SITE_URL; }} /></div></>;
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

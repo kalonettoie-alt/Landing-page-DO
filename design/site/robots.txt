@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /connexion
+Sitemap: https://www.deltomops.com/sitemap.xml
