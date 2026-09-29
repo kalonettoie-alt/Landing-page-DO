@@ -1,65 +1,83 @@
-# Deltom — site vitrine
+# Deltom — site web
 
-Site vitrine de **DELTOM GROUPE SAS** — plateforme de coordination entre hôtes de
-locations courte durée (Airbnb, Booking) et opérateurs de ménage indépendants, en
+Site de **DELTOM GROUPE SAS** : plateforme de mise en relation entre hôtes de
+locations courte durée (Airbnb, Booking) et agents de ménage indépendants, en
 Île-de-France.
 
 > Deltom ne réalise pas les prestations : elle organise, coordonne et facture pour le
 > compte des opérateurs (mandat de facturation).
 
-## Stack
+## Principe
 
-- **React 19** + **TypeScript**
-- **Vite 7** — build **multi-pages (MPA)**, une vraie URL par page (pas de routing client)
-- **CSS maison** avec design system (tokens dans `src/styles/site.css`)
-- **Polices auto-hébergées** via `@fontsource` (Plus Jakarta Sans + JetBrains Mono) — aucune requête Google Fonts (RGPD)
-- **lottie-react** pour l'animation produit (bundlée, pas de CDN externe)
+Le site est **généré en HTML statique** à partir des maquettes haute fidélité du
+design (handoff Claude Design, « site v4 »). Chaque page sort complète au build :
+en-tête, méga-menu, pied de page et textes sont présents **sans JavaScript**
+(exigence SEO du handoff). Le JavaScript ne sert qu'aux animations, simulateurs,
+menus et formulaires.
 
-## Pages
+```
+design/site/          maquettes (source de vérité du contenu) + CSS/JS des pages
+  pro.js              navigation (MENU), logo et styles de l'en-tête — lus par le build
+  pro-client.js       interactions de l'en-tête (le HTML est rendu au build)
+  forms.js            envoi des formulaires vers Formspree
+  club-onb.js         onboarding du Club des opérateurs
+  connexion.html      page « espace client en maintenance »
+design/client-web/    console client affichée en aperçu sur l'accueil
+public/               favicons, manifest, pages légales statiques (+ legal.css, polices)
+build/build.mjs       génère dist/ (routes, liens, en-tête/pied, formulaires, sitemap)
+build/site.mjs        gabarits de l'en-tête et du pied de page (repris de pro.js)
+build/demos.mjs       aperçus en iframe (console précompilée, parcours voyageur)
+build/serve.mjs       aperçu local avec URL propres
+```
 
-| URL | Fichier HTML | Composant |
+### Ce que fait le build
+
+- **Routes** : l'URL de chaque page vient de sa balise `canonical`
+  (`menage.html` → `/services/menage`, `guide-x.html` → `/guides/x`, etc.).
+  Tous les liens `.html` (HTML et JS) sont réécrits en URL propres.
+- **En-tête / pied de page** rendus en HTML depuis `MENU` (dans `pro.js`).
+- **Favicons** validés + **balise Google Search Console** sur l'accueil.
+- **Sans JavaScript** : les blocs à apparition (`.rv`) restent visibles.
+- **Aperçus** : la console client est précompilée (esbuild) avec React production
+  servi depuis notre domaine (aucun CDN, pas de Babel dans le navigateur).
+- **sitemap.xml / robots.txt** générés (pages `noindex` exclues).
+- **Contrôle** : chaque lien interne de `dist/` est vérifié ; le build échoue sinon.
+
+### Mettre à jour depuis un nouveau handoff design
+
+Remplacer les fichiers de `design/site/` par ceux du nouveau `site-v*/`, puis
+reporter les ajustements propres à la production (voir l'historique git :
+formulaires, SMS retiré de l'onboarding, Lien voyageur à 3,99 €, carte Zones…),
+et lancer `npm run build` : les avertissements signalent tout lien cassé.
+
+## Formulaires (Formspree)
+
+Le succès ne s'affiche **que** si Formspree répond OK ; sinon, message d'erreur avec
+l'e-mail et le WhatsApp en secours.
+
+| Formulaire | Boîte | Après envoi |
 | --- | --- | --- |
-| `/` | `index.html` | `src/pages/Accueil.tsx` (estimateur interactif) |
-| `/comment-ca-marche` | `comment-ca-marche.html` | `src/pages/CommentCaMarche.tsx` |
-| `/tarifs` | `tarifs.html` | `src/pages/Tarifs.tsx` (charge `public/prices.json`) |
-| `/devenir-operateur` | `devenir-operateur.html` | `src/pages/DevenirOperateur.tsx` (formulaire 3 étapes) |
-| `/a-propos` | `a-propos.html` | `src/pages/APropos.tsx` |
+| Contact, newsletters, `/connexion` | hôtes `mqeqwkqz` | `/merci-contact` ou confirmation |
+| Devenir opérateur (sociétés), onboarding Club, programme Club | opérateurs `mwvgpkna` | `/merci-prestataire`, écran de fin, `/merci-programme` |
 
-### Pages légales
+Les boutons « Se connecter » / « Créer mon compte » mènent à `/connexion`
+(application en maintenance + formulaire), en attendant la console client.
 
-Le juridique est **rapatrié sur le site** (aucun lien vers `legal.deltomops.com`).
-Ce sont **trois vraies pages HTML statiques** (aucun React, aucun JS, aucun rewrite) —
-le contenu est présent dans le HTML brut, robuste pour Stripe et les crawlers même
-sans exécution de JavaScript. Fichiers dans `public/`, servis en URLs propres par
-`cleanUrls` (Vercel) :
+## Pages légales
 
-- `public/mentions-legales.html` → `/mentions-legales`
-- `public/cgv.html` → `/cgv` (ancres réelles `#facturation`, `#remboursement`)
-- `public/confidentialite.html` → `/confidentialite`
-
-Feuille de style dédiée `public/legal.css` + polices auto-hébergées dans
-`public/fonts/`. Contenu juridique **définitif** (DELTOM GROUPE SAS) — ne pas reformuler.
-
-## Configuration à connaître
-
-- **`public/prices.json`** — source unique des tarifs (ménage, blanchisserie, consommables).
-  Éditable sans rebuild : Tarifs **et** l'estimateur de l'accueil le lisent au runtime.
-- **`src/lib/config.ts`** — email de contact, WhatsApp, mentions société, et
-  **`FORMSPREE_OPERATEUR_ENDPOINT`** : endpoint Formspree dédié aux candidatures
-  opérateurs (distinct de la boîte « demandes hôtes »).
-- **Balise Google Search Console** : conservée dans `index.html` (`google-site-verification`).
+Trois pages HTML statiques dans `public/` : `/mentions-legales`, `/cgv`
+(ancres `#facturation`, `#remboursement`), `/confidentialite`. Contenu juridique
+opposable : ne modifier qu'à la demande de DELTOM GROUPE.
 
 ## Déploiement
 
 Vercel. Branche de production : `claude/deltom-operator-landing-dmQ0x` → `www.deltomops.com`.
-Config de build auto-détectée (Vite → `dist/`). `vercel.json` active `cleanUrls`
-(URLs sans `.html`) — aucun rewrite.
+`vercel.json` : `npm run build` → `dist/`, `cleanUrls` (URL sans `.html`).
 
 ## Développement
 
 ```bash
 npm install
-npm run dev      # serveur de dev
-npm run build    # tsc -b && vite build → dist/
-npm run preview  # prévisualiser le build
+npm run build     # génère dist/
+npm run preview   # http://localhost:4321
 ```
