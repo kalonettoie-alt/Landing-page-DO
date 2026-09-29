@@ -46,3 +46,9 @@
 
 /* Erreur d’envoi de l’onboarding (club-onb.js) */
 .ob-err{margin-top:14px;padding:12px 14px;border-radius:14px;background:#FBEAE8;color:#8E2A20;font-size:14px;line-height:1.5}.ob-err a{color:inherit;font-weight:700;text-decoration:underline}.ob-err[hidden]{display:none}
+/* Zones : recherche de commune (Île-de-France) */
+.ob-ac{position:relative}
+.ob-sg{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:5;margin:0;padding:6px;list-style:none;background:#fff;border-radius:16px;box-shadow:0 0 0 1.5px var(--ln),0 16px 36px rgba(16,32,31,.14);max-height:264px;overflow:auto}
+.ob-sg li{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer}
+.ob-sg li:hover,.ob-sg li.on{background:#EEF3F1}
+.ob-opt{font-style:normal;font-weight:500;color:var(--mu)}
