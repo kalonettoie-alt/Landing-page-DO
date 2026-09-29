@@ -79,6 +79,7 @@
 .pf .nl input{flex:1;min-width:0;border:0;background:transparent;color:#fff;font:inherit;font-size:14.5px;padding:0 14px;outline:none}
 .pf .nl input::placeholder{color:rgba(255,255,255,.45)}
 .pf .nl button{height:40px;padding:0 16px;border:0;border-radius:99px;background:#fff;color:#1A3A3A;font:inherit;font-weight:650;font-size:14px;cursor:pointer}
+.pf .nl-rg{margin-top:10px;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.55);max-width:340px}.pf .nl-rg a{display:inline;padding:0;color:inherit;text-decoration:underline}
 .pf h4{margin:0 0 14px;color:#fff;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
 .pf a{display:block;padding:5px 0;color:rgba(255,255,255,.66)}.pf a:hover{color:#fff}
 .pf .bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.45)}
