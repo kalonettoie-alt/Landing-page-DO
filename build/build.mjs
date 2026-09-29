@@ -40,6 +40,7 @@ const FAVICONS = `<link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="manifest" href="/site.webmanifest" />`;
 const GSC = '<meta name="google-site-verification" content="2HT3Jg52HwU-FlTonByby0Y9nKa0MwTZbHjh1h6IaJI" />';
 // Sans JavaScript, les blocs à apparition (.rv) restent visibles.
+const ANALYTICS = '<script defer src="/assets/analytics.js"></script>';
 const NOSCRIPT = '<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>';
 
 const warn = [];
@@ -114,6 +115,8 @@ for (const f of pages) {
   head.insertAdjacentHTML('beforeend', NOSCRIPT);
   // Zones tactiles ≥ 44 px sur mobile (chargée en dernier, voir design/site/mobile.css).
   head.insertAdjacentHTML('beforeend', '<link rel="stylesheet" href="/assets/mobile.css" />');
+  // Mesure d'audience Vercel (production uniquement, sans cookie) + événements : voir design/site/analytics.js.
+  head.insertAdjacentHTML('beforeend', ANALYTICS);
 
   // Aperçus en iframe.
   document.querySelectorAll('iframe[src]').forEach(fr => {
@@ -166,10 +169,10 @@ write(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 ${sitemap.map(r => `  <url><loc>${SITE}${r === '/' ? '/' : r}</loc><lastmod>${TODAY}</lastmod><priority>${prio(r)}</priority></url>`).join('\n')}
 </urlset>
 `);
+// Pas de Disallow : /connexion, les pages « merci » et /demo/* portent une balise noindex,
+// que Google doit pouvoir lire (une page bloquée par robots.txt peut quand même être indexée sans contenu).
 write(path.join(OUT, 'robots.txt'), `User-agent: *
 Allow: /
-Disallow: /connexion
-Disallow: /demo/
 
 Sitemap: ${SITE}/sitemap.xml
 `);
