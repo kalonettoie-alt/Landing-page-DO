@@ -26,7 +26,7 @@
     () => ({ h: 'Tu es plutôt…', p: 'Pour te proposer le bon rythme dès le départ.', b: `<div class="ob-ch" data-k="profil">${PROF.map(x => `<button type="button" class="${S.profil === x ? 'on' : ''}" data-v="${x}">${x}</button>`).join('')}</div>`, ok: () => !!S.profil, cta: 'Continuer' }),
     () => ({ h: 'Où veux-tu travailler ?', p: 'Indique ta ville et jusqu’où tu peux te déplacer. Tu pourras changer à tout moment.', b: `<label class="ob-f"><span>Ta ville ou ton code postal</span><div class="ob-ac"><input id="ob-vi" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ob-sg" placeholder="ex. Montreuil, 94300, Paris 11e" value="${esc(S.ville)}" /><ul id="ob-sg" class="ob-sg" role="listbox" hidden></ul></div></label><label class="ob-f"><span>Distance maximale depuis chez toi · <b id="ob-rv">${S.rayon} km</b></span><input id="ob-ry" type="range" min="1" max="30" value="${S.rayon}" /></label><div class="ob-f"><span>Ou des départements entiers <em class="ob-opt">(facultatif)</em></span><div class="ob-ch sm" data-k="deps" data-m>${DEPS.map(([n, l]) => `<button type="button" class="${S.deps.includes(n) ? 'on' : ''}" data-v="${n}">${l} (${n})</button>`).join('')}</div></div>`, ok: () => S.ville.trim().length >= 2 || S.deps.length > 0, cta: 'Continuer' }),
     () => ({ h: 'Quand es-tu disponible ?', p: 'Tu ne recevras des missions que sur ces créneaux.', b: `<div class="ob-days">${JRS.map((d, i) => `<button type="button" class="${S.jours.includes(i) ? 'on' : ''}" data-d="${i}">${d}</button>`).join('')}</div><div class="ob-ch" data-k="creneau">${['Matin', 'Après-midi', 'Journée'].map(x => `<button type="button" class="${S.creneau === x ? 'on' : ''}" data-v="${x}">${x}</button>`).join('')}</div><p class="ob-err" role="alert" hidden></p>`, ok: () => S.jours.length > 0 && !sending, cta: 'Envoyer mon inscription', submit: true }),
-    () => ({ h: `Inscription envoyée, ${esc(S.prenom || '')} !`, p: 'L’équipe Deltom te recontacte sous 48 h pour la suite.', b: `<div class="ob-done"><div class="ob-ok">✓</div><ul class="ob-ls"><li class="ok"><i>✓</i><div><b>Inscription reçue</b><span>+33 ${esc(S.tel)}</span></div></li><li class="ok"><i>✓</i><div><b>Zones et disponibilités</b><span>${esc(zoneTxt())} · ${S.jours.length} jour${S.jours.length > 1 ? 's' : ''} par semaine</span></div></li><li class="nx"><i>3</i><div><b>Formation · 10 h</b><span>Ton accès t’est envoyé après notre échange</span></div></li><li><i>4</i><div><b>Entreprise et documents</b><span>On le fait avec toi pendant la formation</span></div></li></ul><a class="ob-wa" href="${WA}" target="_blank" rel="noopener">Ajoute Christine sur WhatsApp</a><p class="ob-rm">Ta première mission possible dans 3 semaines.</p></div>`, ok: () => true, cta: 'Voir le programme de la formation', end: true }),
+    () => ({ h: `C’est noté, ${esc(S.prenom || '')} !`, p: 'Ton inscription est bien enregistrée. Deltom n’a pas encore lancé ses missions : on te prévient par e-mail ou par téléphone dès le lancement.', b: `<div class="ob-done"><div class="ob-ok">✓</div><ul class="ob-ls"><li class="ok"><i>✓</i><div><b>Inscription reçue</b><span>+33 ${esc(S.tel)}</span></div></li><li class="ok"><i>✓</i><div><b>Zones et disponibilités</b><span>${esc(zoneTxt())} · ${S.jours.length} jour${S.jours.length > 1 ? 's' : ''} par semaine</span></div></li><li class="nx"><i>3</i><div><b>Lancement de Deltom</b><span>On te prévient dès l’ouverture des missions</span></div></li></ul><a class="ob-wa" href="${WA}" target="_blank" rel="noopener">Une question ? Écris-nous sur WhatsApp</a><p class="ob-rm"><a href="/club-operateurs/formation">Découvrir le programme de la formation</a></p></div>`, ok: () => true, cta: 'Terminer', end: true }),
   ];
   const zoneTxt = () => [S.ville.trim() ? `${S.ville.trim()} + ${S.rayon} km` : '', S.deps.length ? S.deps.length + ' département' + (S.deps.length > 1 ? 's' : '') : ''].filter(Boolean).join(' · ');
   // Suggestions de communes d'Île-de-France
@@ -68,7 +68,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _subject: `Inscription Club des opérateurs : ${S.prenom} ${S.nom}`,
+          _subject: `Inscription Club (liste d’attente lancement) : ${S.prenom} ${S.nom}`,
           source: 'Onboarding Club (' + location.pathname + ')',
           prenom: S.prenom, nom: S.nom, email: S.email, telephone: '+33 ' + S.tel,
           profil: S.profil, ville: S.ville.trim(), rayon_km: S.rayon, departements: S.deps.map(n => DEPS.find(d => d[0] === n)[1] + ' (' + n + ')').join(', '),
@@ -113,7 +113,7 @@
     q('.ob-go').onclick = () => st.end ? done() : st.submit ? submit() : next();
     const first = box.querySelector('input:not([type=range])'); if (first) setTimeout(() => first.focus(), 60);
   };
-  const done = () => { if (location.pathname !== '/club-operateurs/formation') location.href = '/club-operateurs/formation'; else close(); };
+  const done = () => close();
   const next = () => { if (!steps[S.step]().ok()) return; if (steps[S.step]().submit) { submit(); return; } S.step = Math.min(N, S.step + 1); render(); };
   bk.onclick = () => { if (sending) return; S.step = Math.max(0, S.step - 1); render(); };
   let last;
