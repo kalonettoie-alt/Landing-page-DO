@@ -224,3 +224,9 @@ input[type=range]{width:100%;accent-color:var(--vert)}
 .tl{display:inline-block;padding:10px 0;min-height:0;line-height:1.4;max-width:100%}.ctas .tl{display:inline-flex;align-items:center;min-height:44px;padding:0;white-space:nowrap}
 
 .tl{white-space:nowrap}@media (max-width:560px){.tl{white-space:normal}.ctas .tl{white-space:nowrap}}
+
+/* Formulaires : champs contenus dans la carte (pas de débordement à droite)
+   et liste déroulante dessinée comme les autres champs, y compris sur Safari. */
+.form label,.fm label{min-width:0}
+.form input:not([type=checkbox]):not([type=radio]),.form select,.form textarea,.fm input:not([type=checkbox]):not([type=radio]),.fm select,.fm textarea{font-weight:400;width:100%;min-width:0;box-sizing:border-box}
+form.form select,form.fm select{-webkit-appearance:none;appearance:none;padding-right:44px;cursor:pointer;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236A7472' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 18px center}
