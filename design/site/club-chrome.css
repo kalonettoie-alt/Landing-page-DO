@@ -1,0 +1,20 @@
+/* club-chrome.css — en-tête et pied de page du Deltom Club sur les pages villes (/prestataires/*).
+   Repris de club.css, limité à .nv et .ft pour ne rien changer au contenu de ces pages.
+   Différence avec la page du Club : l'en-tête est « collant » avec un fond clair dès le départ
+   (la page du Club le rend opaque au défilement avec club.js). */
+.nv,.ft{--g:#1A3A3A;--ink:#10201F;--b:#51605D;--gold:#C9A24A;--ln:rgba(16,32,31,.08)}
+.nv>.w,.ft>.w{box-sizing:border-box;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,44px)}
+.nv{position:sticky;top:0;z-index:50;padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px;background:rgba(251,250,246,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--ln)}
+.nv .w{display:flex;align-items:center;gap:8px}
+.nv .lg{display:inline-flex;align-items:center;min-height:44px;font-weight:800;font-size:21px;letter-spacing:-.045em;text-decoration:none;color:var(--ink);white-space:nowrap}
+.nv .lg i{font-style:normal;color:var(--gold)}
+.nv .pill{display:flex;align-items:center;gap:2px;margin:0 auto;padding:6px;border-radius:99px;background:rgba(255,255,255,.72);box-shadow:0 8px 24px rgba(16,32,31,.06)}
+.nv .pill a{padding:10px 15px;border-radius:99px;font-size:14.5px;font-weight:650;color:var(--b);text-decoration:none;white-space:nowrap}
+.nv .pill a:hover{background:#fff;color:var(--ink)}
+.nv .bt{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:99px;font-weight:750;font-size:14.5px;line-height:1;text-decoration:none;white-space:nowrap;background:var(--g);color:#fff;box-shadow:0 10px 24px rgba(26,58,58,.25)}
+@media (max-width:1040px){.nv .pill{display:none}.nv .bt{margin-left:auto}}
+.ft{background:#151C38;padding:24px 0 calc(24px + env(safe-area-inset-bottom,0px));font-size:13px;line-height:1.55;color:rgba(255,255,255,.55)}
+.ft .w{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center}
+.ft a{display:inline-flex;align-items:center;min-height:44px;color:rgba(255,255,255,.72);text-decoration:none}
+.ft a:hover{color:#fff}
+.ft nav{display:flex;flex-wrap:wrap;gap:0 20px}
